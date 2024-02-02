@@ -1,0 +1,38 @@
+.InputBlock{
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 24px;
+}
+.InputBlock__Name {
+    color: #A0A0A0;
+    font-size: 10px;
+    font-weight: 400;
+    margin: 0;
+}
+.InputBlock__Input {
+    width: 100%;
+    border: 0;
+    transition: 0.5s;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 5px 0 10px 0;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.InputBlock__Input:focus {
+    outline: 0;
+    border-bottom: 1px solid #3456F3;
+    transition: 0.5s;
+}
+.InputBlock__InputError {
+    color: #FF3055;
+}
+#Register__FormPassw {
+    margin-bottom: 0;
+}
+
+#Login__FormPassw {
+    margin-bottom: 0;
+}

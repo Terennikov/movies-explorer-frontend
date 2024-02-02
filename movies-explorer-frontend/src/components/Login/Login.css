@@ -1,0 +1,117 @@
+.Login {
+    font-family: 'Inter';
+    height: 100vh;
+    font-style: normal;
+    line-height: normal;
+}
+.Login__FullHeight {
+    height: 100%;
+}
+.Login__Wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.Login__Title {
+    margin: 40px 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+.Login__RegistrationBlock {
+    width: 100%;
+    max-width: 396px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 70px;
+}
+.Login__ButtonsBlock {
+    padding-bottom: 70px;
+}
+.Login__ButtonsBlockSignInButton {
+    cursor: pointer;
+    border: 0;
+    width: 100%;
+    border-radius: 3px;
+    background: #3456F3;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px 0 15px 0;
+    transition: 0.5s;
+    margin-bottom: 16px;
+}
+
+.Login__ButtonsBlockSignInButton:hover {
+    opacity: 0.8;
+}
+.Login__BottomNavLinkBlock {
+    display: flex;
+    justify-content: center;
+}
+.Login__BottomNavLinkPrompt {
+    color: #A0A0A0;
+    margin: 0 6px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+.Login__BottomNavLink {
+    color: #3456F3;
+    transition: 0.5s;
+    font-size: 14px;
+    font-weight: 400;
+}
+.Login__BottomNavLink:hover {
+    opacity: 0.7;
+}
+.Login__Error {
+    margin: 0;
+    padding-top: 6px;
+    color: #FF3055;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+@media screen and (max-width:1279px) {
+    .Login__Wrap {
+        align-items: center;
+    }
+    .Login_Form {
+        margin-bottom: 218px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .Login__Wrap {
+        align-items: normal;
+    }
+    .Login__LogoBlock {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .Login__Title {
+        margin: 50px 0 80px 0;
+        text-align: center;
+    }
+    .Login__RegistrationBlock {
+        padding-top: 56px;
+        max-width: 260px;
+    }
+    .Login__ButtonsBlock {
+        padding-bottom: 30px;
+    }
+    .Login__ButtonsBlockSignInButton {
+        font-size: 12px;
+        font-weight: 400;
+        padding: 15px 0 15px 0;
+    }
+    .Login__BottomNavLinkPrompt {
+        font-size: 12px;
+    }
+    .Login__BottomNavLink {
+        font-size: 12px;
+    }
+}

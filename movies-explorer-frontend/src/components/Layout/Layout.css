@@ -1,0 +1,12 @@
+.Layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    height: 100%;
+}
+
+@media screen and (max-width:768px) {
+    
+}

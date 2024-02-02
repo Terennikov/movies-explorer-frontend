@@ -1,0 +1,108 @@
+.Techs {
+    padding-top: 100px;
+    font-family: 'Inter';
+    background: #F5F5F5;
+    margin-bottom: 110px;
+}
+.Techs_Content {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Techs_Title {
+    margin-top: 0;
+    margin-bottom: 26px;
+    text-align: center;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+}
+.Techs_Description {
+    margin-top: 0;
+    margin-bottom: 100px;
+    max-width: 460px;
+    text-align: center;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+}
+.Techs_Stak {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+.Techs_Stak_Tile {
+    margin: 0 5px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
+    width: 90px;
+    padding: 20px 0;
+    border-radius: 10px;
+    background: #E8E8E8;
+}
+
+@media screen and (max-width:1279px) {
+    .Techs {
+        padding-top: 90px;
+    }
+    .Techs_Description{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 83px;
+    }
+    .Techs_Content {
+        padding-top: 80px;
+    }
+    .Techs_Stak {
+        width: 100%;
+        max-width: 700px;
+        margin-bottom: 90px;
+    }
+    .Techs_Stak_Tile {
+        max-width: 90px;
+        margin: 0;
+        gap: 10px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .Techs {
+        padding-top: 70px;
+        margin-bottom: 70px;
+    }
+    .Techs_Content {
+        padding-top: 60px;
+    }
+    .Techs_Title {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: normal;
+        margin-bottom: 24px;
+    }
+    .Techs_Description {
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: -0.44px;
+        margin-bottom: 50px;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        justify-items: center;
+        max-width: 178px;
+        margin-bottom: 70px;
+    }
+}

@@ -1,0 +1,28 @@
+.Navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Navigation_Btns {
+    display: flex;
+}
+.Navigation_BtnsWhite a {
+    color: #FFF;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.Navigation_BtnsBlack a {
+    color: #000000;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.Navigation_navBtnMovies {
+    margin-right: 16px;
+}
+.Navigation_navBtnMoviesActive {
+    font-weight: 500;
+}

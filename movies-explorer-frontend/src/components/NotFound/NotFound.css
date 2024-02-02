@@ -1,0 +1,64 @@
+.NotFound {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Inter';
+    text-align: center;
+    font-style: normal;
+    line-height: normal;
+    font-weight: 400;
+}
+.NotFound__ErrorStatusNum {
+    font-weight: 400;
+    font-size: 140px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.NotFound__ErrorStatus {
+    font-weight: 400;
+    margin: 0;
+    font-size: 16px;
+}
+
+.NotFound__GoBackButton {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    color: #3456F3;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.NotFound__GoBackButton:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width:767px) {
+    .NotFound {
+        height: 100%;
+    }
+    .NotFound__ErrorStatusNum {
+        font-size: 80px;
+    }
+    .NotFound__ErrorStatus {
+        font-size: 12px;
+    }
+    .Error_Content767 {
+        height: 92vh;
+    }
+    .NotFound__GoBackButton {
+        display: block;
+        padding-bottom: 30px;
+        height: auto;
+    }
+    .ErrorContainer {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
