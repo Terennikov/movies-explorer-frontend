@@ -23,6 +23,10 @@
   transition: 0.4s;
 }
 
+.FilterCheckbox_Slider:hover {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
 .FilterCheckbox_Slider:before {
   position: absolute;
   content: "";

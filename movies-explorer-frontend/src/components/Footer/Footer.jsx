@@ -20,7 +20,7 @@ function Footer() {
                     </Link>
                     <Link
                         className="Footer_BottomContentGitLink"
-                        to="https://github.com/h1ze"
+                        to="https://github.com/Terennikov"
                         target="_blank"
                     >
                         Github

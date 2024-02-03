@@ -1,11 +1,11 @@
 .Promo {
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', sans-serif;
     padding-top: 75px;
     width: 100%;
-    height: 501px;
+    height: 499px;
     background: #073042;
     display: flex;
-    margin-bottom: 110px;
+    margin-bottom: 111px;
 }
 .Promo_TopText1280 {
     color: #FFF;
@@ -23,16 +23,20 @@
     font-weight: 400;
     line-height: normal;
     opacity: 0.5;
-    margin-bottom: 146px;
+    margin-bottom: 145px;
 }
 .Promo_MoreButton {
     background: transparent;
     border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 10px 20px;
+    transition: 0.5s;
+}
+.Promo_MoreButton:hover {
+    box-shadow: 0px 3px 14px 0px rgba(255, 255, 255, 0.288);
 }
 
-.Promo_MoreButton p {
+.Promo_MoreButton {
     color: #FFF;
     font-size: 12px;
     font-style: normal;
@@ -58,7 +62,7 @@
 
 @media screen and (max-width:1279px) {
     .Promo {
-        height: 725px;
+        height: 711px;
         padding-top: 140px;
         margin-bottom: 90px;
     }
@@ -85,7 +89,7 @@
         margin-top: 0
     }
     .Promo_LandingLogo {
-        margin-bottom: 48px;
+        margin-bottom: 45px;
     }
     .Promo_BottomText1280 {
         display: none;
@@ -99,7 +103,8 @@
         font-weight: 400;
         line-height: normal;
         opacity: 0.5;
-        margin-bottom: 92px;
+        margin-bottom: 90px;
+        margin-top: 0;
     }
 }
 
@@ -110,7 +115,7 @@
     }
     .Promo_LandingLogo {
         max-width: 310px;
-        width: 78%;
+        width: 71.5%;
         margin-bottom: 44px;
     }
     .Promo_LandingLogoBlock {
@@ -136,6 +141,6 @@
     .Promo_BottomText768 {
         width: 85%;
         margin-top: 0;
-        margin-bottom: 80px;
+        margin-bottom: 79px;
     }
 }

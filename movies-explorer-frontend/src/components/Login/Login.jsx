@@ -24,7 +24,7 @@ function Login() {
           <div className="Login__RegistrationBlock">
             <form className='Login_Form' id='Login_Form'>
             <div className="Login__LogoBlock">
-                <NavLink to='/'><img src={Logo} alt="logo" /></NavLink>
+                <NavLink to='/'><img src={Logo} className="Logo" alt="Логотип" /></NavLink>
               </div>
               <h1 className='Login__Title'>Рады видеть!</h1>
               <InputBlock 

@@ -1,4 +1,10 @@
+.MoviesCardList {
+    width: 100%;
+}
 
+.FullHeightMovies {
+    margin-bottom: -29px;
+}
 
 .MoviesCardList_Wraper {
     display: grid;
@@ -12,10 +18,25 @@
         grid-template-columns: 1fr 1fr;
         gap: 30px;
     }
+    .MoviesCardList {
+        width: 100%;
+    }
+    .FullHeightMovies {
+        margin-bottom: 448px;
+    }
 }
 @media screen and (max-width:767px) {
+    .MoviesCardList {
+        width: 100%;
+    }
+    .MoviesCardList_Container {
+        width: 94%;
+    }
     .MoviesCardList_Wraper {
         grid-template-columns: 1fr;
         gap: 34px;
+    }
+    .FullHeightMovies {
+        margin-bottom: 149px;
     }
 }

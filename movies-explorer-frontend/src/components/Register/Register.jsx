@@ -24,7 +24,7 @@ function Register() {
           <div className="Register__RegistrationBlock">
             <form className='Register_Form' id='Register_Form'>
               <div className="Register__LogoBlock">
-                <NavLink to='/'><img src={Logo} alt="logo" /></NavLink>
+                <NavLink to='/'><img src={Logo} className="Logo" alt="Логотип" /></NavLink>
               </div>
               <h1 className='Register__Title'>Добро пожаловать!</h1>
               <InputBlock

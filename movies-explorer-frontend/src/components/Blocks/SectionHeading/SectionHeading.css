@@ -1,7 +1,7 @@
 .SectionHeading {
     width: 100%;
     color: #000;
-    font-family: "Inter";
+    font-family: 'Inter', 'Arial', sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -11,6 +11,13 @@
     padding-bottom: 23px;
     margin: 0;
 }
+
+/* @media screen and (max-width:1279px) {
+    .SectionHeading {
+        width: 92%;
+    }
+} */
+
 @media screen and (max-width:767px) {
     .SectionHeading {
         padding-bottom: 28px;

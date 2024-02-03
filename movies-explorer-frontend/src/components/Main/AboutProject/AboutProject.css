@@ -1,11 +1,14 @@
 .AboutProject {
-    font-family: "Inter";
-    margin-bottom: 110px;
+    width: 100%;
+    font-family: 'Inter', 'Arial', sans-serif;
+    margin-bottom: 111px;
 }
 
 .AboutProjects_Description {
     padding-top: 70px;
     margin-bottom: 110px;
+    justify-content: space-between;
+    gap: 40px;
 }
 
 .AboutProjects_DescriptionTitle {
@@ -74,7 +77,8 @@
 
 @media screen and (max-width:1279px) {
     .AboutProject {
-        margin-bottom: 90px;
+        margin-bottom: 77px;
+        width: 94.6%;
     }
     .AboutProjects_DescriptionTitle {
         margin-bottom: 22px;
@@ -85,17 +89,22 @@
     }
     .AboutProjects_Description {
         margin-bottom: 93px;
+        gap: 30px;
+    }
+    .AboutProjects_ProgressBarComplited {
+        width: 21%;
     }
 
 }
 @media screen and (max-width:767px) {
     .AboutProject {
         margin-bottom: 69px;
+        width: 97%;
     }
     .AboutProjects_Description {
-        padding-top: 60px;
+        padding-top: 62px;
         flex-direction: column;
-        margin-bottom: 4px;
+        margin-bottom: 32px;
     }
     .AboutProject__FullWidth {
         width: 100%;
@@ -108,10 +117,10 @@
     .AboutProjects_DescriptionText {
         font-size: 11px;
         line-height: 16px;
-        margin-bottom: 56px;
+        margin-bottom: 28px;
     }
     .AboutProjects_ProgressBarComplited {
-        width: 45%;
+        width: 44%;
     }
     .AboutProjects_ProgressBarComplited .AboutProjects_bar {
         padding: 11px 10px;
@@ -120,12 +129,12 @@
         padding: 11px 10px;
     }
     .AboutProjects_BackEnd {
-        padding-top: 10px;
+        padding-top: 8px;
         margin: 0;
         font-size: 11px;
     }
     .AboutProjects_FrontEnd {
-        padding-top: 10px;
+        padding-top: 8px;
         margin: 0;
         font-size: 11px;
     }

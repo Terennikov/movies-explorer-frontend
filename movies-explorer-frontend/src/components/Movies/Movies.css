@@ -1,5 +1,5 @@
 .Movies {
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;
     line-height: normal;
 }
@@ -19,17 +19,25 @@
     font-size: 12px;
     font-weight: 400;
     padding: 11px 0 9px 0;
-    margin-top: 50px;
+    margin-top: 59px;
     margin-bottom: 80px;
     transition: 0.5s;
+    cursor: pointer;
 }
 .Movies_LoadMoreButton:hover {
     font-weight: 500;
     background: rgba(249, 249, 249, 0.8);
 }
 
+@media screen and (max-width:1279px) {
+    .Movies_LoadMoreButton {
+        margin-top: 61px;
+    }
+}
+
 @media screen and (max-width:767px) {
     .Movies_LoadMoreButton {
         max-width: 240px;
+        margin-top: 61px;
     }
 }

@@ -1,6 +1,6 @@
 .Profile {
     height: 100vh;
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', sans-serif;
     line-height: normal;
     font-style: normal;
 }
@@ -28,7 +28,7 @@
     width: 100%;
     max-width: 410px;
     height: 100%;
-    margin-bottom: 32px;
+    margin-bottom: 161px;
 }
 .Profile__UserDataName {
     display: flex;
@@ -47,12 +47,11 @@
 }
 .Profile__UserDataText {
     margin: 0;
-    text-wrap: nowrap;
     font-size: 11px;
     font-weight: 500;
 }
 .Profile__UserDataInput {
-    width: 100%;
+    width: 90%;
     text-align: end;
     border: 0;
     font-size: 11px;
@@ -60,6 +59,8 @@
 }
 .Profile__UserDataInput:focus {
     outline: 0;
+    font-weight: 500;
+    transition: 0.5s;
 }
 .Profile__UserDataInput:disabled {
     background: white;
@@ -94,6 +95,7 @@
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
+    transition: 0.5s;
 }
 .Profile__BottomButtonSignOut:hover {
     opacity: 0.7;
@@ -135,7 +137,7 @@
         margin-bottom: 96px;
     }
     .Profile__UserData {
-        margin-bottom: 22px;
+        margin-bottom: -45px;
     }
     .Profile__BottomButtons {
         justify-content: flex-start;

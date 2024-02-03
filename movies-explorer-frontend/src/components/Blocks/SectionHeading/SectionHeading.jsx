@@ -2,7 +2,7 @@ import React from 'react'
 
 function SectionHeading(props) {
   return (
-    <h2 className='SectionHeading' id='SectionHeading'>
+    <h2 className='SectionHeading'>
         {props.children}
     </h2>
   )

@@ -19,13 +19,13 @@ function MoviesCard({imgsrc, name, isSaved, duration, isMovieSaved}) {
   return (
     <div className='MoviesCard'>
         <div className="MoviesCard__MainData">
-            <img className="MoviesCard__Img" src={imgsrc} alt="" />
+            <img className="MoviesCard__Img" src={imgsrc} alt={name} />
             <div className="MoviesCard__NameAndSaved">
                 <h4 className="MoviesCard__Name">{name}</h4>
                 {isMovieSaved ? 
                     (
-                    <img className="MoviesCard__Delete" src={Delete} alt="Delete" />
-                    ) : save ? (<img src={LikeActive} alt="ActiveLike" className="MoviesCard__SavedActive" onClick={() => saveFunc() }/>) : (<img src={Like} alt="Like" className="MoviesCard__Saved" onClick={() => saveFunc() }/>)
+                    <img className="MoviesCard__Delete" src={Delete} alt="Удалить" />
+                    ) : save ? (<img src={LikeActive} alt="Активный Лайк" className="MoviesCard__SavedActive" onClick={() => saveFunc() }/>) : (<img src={Like} alt="Лайк" className="MoviesCard__Saved" onClick={() => saveFunc() }/>)
                 
                 }
             </div>

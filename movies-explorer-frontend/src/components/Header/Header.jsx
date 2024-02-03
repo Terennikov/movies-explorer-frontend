@@ -17,7 +17,7 @@ function Header({ isSignIn, menuOpenHandler }) {
         <div className="container">
             <div className="row">
                 <div className="col-3">
-                <NavLink to='/'><img src={Logo} alt="logo" /></NavLink>
+                <NavLink to='/'><img className="Logo" src={Logo} alt="Логотип" /></NavLink>
                 </div>
                 <div className="col-6">
                     <div className="navBlock nav1280">
@@ -31,23 +31,23 @@ function Header({ isSignIn, menuOpenHandler }) {
                     {isSignIn ? 
                         (
                             <div className="rightNavBlock flexend">
-                                <NavLink to='/profile'><button 
+                                <NavLink to='/profile'
                             className={`header_toProfileBtn nav1280 ${location.pathname === '/' ? 'header_toProfileBtnGreen' : 'header_toProfileBtnWhite'}`}>
                                 Аккаунт 
-                                {location.pathname === '/' ? (<img src={People_Icon} alt="People" />) : (<img src={People_Icon_Gray} alt="People" />)}
+                                {location.pathname === '/' ? (<img src={People_Icon} alt="Человек" />) : (<img src={People_Icon_Gray} alt="Серый человек" />)}
                                 
-                            </button></NavLink>
+                            </NavLink>
                             <button className='Header__menuBurger ' onClick={() => menuOpenHandler()}>
-                            {location.pathname === '/' ? (<img src={MenuIconWhite} alt="Menu"/>)
+                            {location.pathname === '/' ? (<img src={MenuIconWhite} alt="Меню"/>)
                             :
-                            (<img src={MenuIcon} alt="Menu"/>)}
+                            (<img src={MenuIcon} alt="Меню"/>)}
                             </button>
                             </div>
                         )
                          : 
                         (<div className='signInUpBtns'>
                         <NavLink to='/signup'><p className={`signUp ${location.pathname !== '/' ? `signUpBlack`: null} `}>Регистрация</p></NavLink>
-                        <NavLink to='/signup'><button className={`signIn`}>Войти</button></NavLink>
+                        <NavLink to='/signup' className={`signIn`}>Войти</NavLink>
                     </div>)}
                 </div>
             </div>

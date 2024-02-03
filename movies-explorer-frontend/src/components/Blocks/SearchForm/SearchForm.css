@@ -1,9 +1,10 @@
 .SearchForm {
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', sans-serif;
     color: #000;
     font-style: normal;
     padding-bottom: 47px;
     margin-bottom: 51px;
+    width: 100%;
 }
 .SearchForm_IsShort {
     display: flex;
@@ -23,7 +24,7 @@
         flex-direction: row-reverse;
     }
     .SearchForm_IsShortText {
-        margin: 0 14px 0 0;
+        margin: 0 17px 0 0;
     }
     .SearchForm {
         padding-bottom: 60px;
@@ -37,7 +38,12 @@
         display: flex;
         justify-content: center;
     }
+    .SearchForm_IsShortText {
+        margin: 0 15px 0 0;
+        font-size: 11px;
+    }
     .SearchForm {
+        width: 100%;
         padding-bottom: 51px;
         margin-bottom: 40px;
     }

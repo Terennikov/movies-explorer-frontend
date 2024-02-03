@@ -8,7 +8,7 @@ import Layout from '../Layout/Layout'
 
 function Main() {
   return (
-    <section className='Main' id='Main'>
+    <main className='Main' id='Main'>
       <Layout>
         <Promo></Promo>
         <AboutProject></AboutProject>
@@ -16,7 +16,7 @@ function Main() {
         <AboutMe></AboutMe>
         <Portfolio></Portfolio>
       </Layout>
-    </section>
+    </main>
   )
 }
 

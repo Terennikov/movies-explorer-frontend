@@ -21,7 +21,7 @@ function Layout({ children, isDisableFooter }) {
   return (
     <section className='Layout' id='Layout'>
       <Header isSignIn={true} menuOpenHandler={menuOpenHandler}></Header>
-      <main>{children}</main>
+      <section className='Layout__PageContent'>{children}</section>
       {isDisableFooter ? null : (<Footer></Footer>)}
       <Menu isMenuOpen={isMenuOpen} closed={menuCloseHandler}/>
     </section>

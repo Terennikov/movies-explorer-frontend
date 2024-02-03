@@ -1,8 +1,9 @@
 .Techs {
-    padding-top: 100px;
-    font-family: 'Inter';
+    padding-top: 87px;
+    font-family: 'Inter', 'Arial', sans-serif;
     background: #F5F5F5;
-    margin-bottom: 110px;
+    margin-bottom: 114px;
+    width: 100%;
 }
 .Techs_Content {
     padding-top: 90px;
@@ -53,26 +54,38 @@
 
 @media screen and (max-width:1279px) {
     .Techs {
-        padding-top: 90px;
+        padding-top: 91px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 93px;
     }
     .Techs_Description{
         font-size: 12px;
         line-height: 18px;
         margin-bottom: 83px;
+        letter-spacing: -0.48px;
+    }
+    .Techs_Title {
+        margin-bottom: 22px;
     }
     .Techs_Content {
         padding-top: 80px;
+        
     }
     .Techs_Stak {
         width: 100%;
-        max-width: 700px;
+        max-width: 651px;
         margin-bottom: 90px;
     }
     .Techs_Stak_Tile {
-        max-width: 90px;
+        max-width: 85px;
         margin: 0;
-        gap: 10px;
         width: 100%;
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+    .techs__container {
+        width: 94.6%;
     }
 }
 
@@ -80,6 +93,9 @@
     .Techs {
         padding-top: 70px;
         margin-bottom: 70px;
+    }
+    .techs__container {
+        width: 97%;
     }
     .Techs_Content {
         padding-top: 60px;
@@ -89,6 +105,9 @@
         letter-spacing: -1.2px;
         line-height: normal;
         margin-bottom: 24px;
+    }
+    .Techs_Stak_Tile {
+        padding: 21px 0;
     }
     .Techs_Description {
         font-size: 11px;

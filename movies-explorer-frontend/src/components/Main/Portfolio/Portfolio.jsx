@@ -7,27 +7,27 @@ function Portfolio() {
         <div className="container">
             <h3 className='Portfolio_Title'>Портфолио</h3>
             <Link className="Link"
-                to="https://github.com/h1ze"
+                to="https://github.com/Terennikov/how-to-learn"
                 target="_blank">
                     <div className='Portfolio_Link'>
-                        <h1 className='Portfolio_Link_Title'>Статичный сайт</h1>
-                        <h1 className='Portfolio_Link_Arrow'>↗</h1>
+                        <h2 className='Portfolio_Link_Title'>Статичный сайт</h2>
+                        <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
             </Link>
             <Link className="Link"
-                to="https://github.com/h1ze"
+                to="https://github.com/Terennikov/russian-travel"
                 target="_blank">
                     <div className='Portfolio_Link'>
-                        <h1 className='Portfolio_Link_Title'>Адаптивный сайт</h1>
-                        <h1 className='Portfolio_Link_Arrow'>↗</h1>
+                        <h2 className='Portfolio_Link_Title'>Адаптивный сайт</h2>
+                        <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
             </Link>
             <Link className="Link"
-                to="https://github.com/h1ze"
+                to="https://github.com/Terennikov/react-mesto-auth"
                 target="_blank">
                     <div className='Portfolio_Link Portfolio_LinkLast'>
-                        <h1 className='Portfolio_Link_Title'>Одностраничное приложение</h1>
-                        <h1 className='Portfolio_Link_Arrow'>↗</h1>
+                        <h2 className='Portfolio_Link_Title'>Одностраничное приложение</h2>
+                        <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
             </Link>
             

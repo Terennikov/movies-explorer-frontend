@@ -7,7 +7,7 @@ function Menu({isMenuOpen, closed}) {
 
     const location = useLocation()
   return (
-    <menu className={`Menu ${isMenuOpen ? 'Menu__Opened' : 'Menu__Closed'}`} id='Menu'>
+    <section className={`Menu ${isMenuOpen ? 'Menu__Opened' : 'Menu__Closed'}`} id='Menu'>
         <div className="Menu_Block">
             <div className="Menu_CloseBlock">
                 <button className='Menu_CloseButton' onClick={closed}><img src={close} alt="" /></button>
@@ -19,16 +19,16 @@ function Menu({isMenuOpen, closed}) {
                     <NavLink to='/saved-movies' className={` Menu__NavLink ${location.pathname === '/saved-movies' ? 'Menu__NavLinkActive' : ''}`}>Сохранённые фильмы</NavLink>
                 </div>
                 <div className="Menu_BottomButtons">
-                <NavLink to='/profile'><button 
+                <NavLink to='/profile'
                             className={`header_toProfileBtn header_toProfileBtnWhite`}>
                                 Аккаунт 
-                                <img src={People_Icon_Gray} alt="People" />
+                                <img src={People_Icon_Gray} alt="Человек" />
                                 
-                            </button></NavLink>
+                            </NavLink>
                 </div>
             </div>
         </div>
-    </menu>
+    </section>
   )
 }
 

@@ -14,7 +14,7 @@ function InputBlock({inputName, inputID, inputType, inputValue, setInputValue, i
   return (
     <div className='InputBlock' id={inputID}>
         <p className='InputBlock__Name'>{inputName}</p>
-    <input id={inputID} className={`InputBlock__Input ${isError ? 'InputBlock__InputError' : ''}`} type={inputType} value={inputValue} onChange={(e) => e.target.value ? setInput(e.target.value) : setInput('')} autoComplete={inputAutoComplite ? inputAutoComplite : null} />
+    <input placeholder={inputName} id={inputID} className={`InputBlock__Input ${isError ? 'InputBlock__InputError' : ''}`} type={inputType} value={inputValue} onChange={(e) => e.target.value ? setInput(e.target.value) : setInput('')} autoComplete={inputAutoComplite ? inputAutoComplite : null} />
     </div>
   )
 }

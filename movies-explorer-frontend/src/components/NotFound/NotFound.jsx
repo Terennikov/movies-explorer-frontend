@@ -12,6 +12,7 @@ function NotFound() {
           <h4 className='NotFound__ErrorStatus'>Страница не найдена</h4>
         </div>
         <p className='NotFound__GoBackButton' onClick={() => navigate(-1)}>Назад</p>
+        {/* Возвращение назад */}
       </div>
     </section>
   )
