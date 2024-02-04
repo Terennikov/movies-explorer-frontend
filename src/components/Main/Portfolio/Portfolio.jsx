@@ -6,23 +6,29 @@ function Portfolio() {
     <section className='Portfolio' id='Portfolio'>
         <div className="container">
             <h3 className='Portfolio_Title'>Портфолио</h3>
-            <Link className="Link"
+            <ul className='portfolio__links'>
+                <li>
+                <Link className="Link"
                 to="https://github.com/Terennikov/how-to-learn"
                 target="_blank">
                     <div className='Portfolio_Link'>
                         <h2 className='Portfolio_Link_Title'>Статичный сайт</h2>
                         <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
-            </Link>
-            <Link className="Link"
+                </Link>
+                </li>
+                <li>    
+                <Link className="Link"
                 to="https://github.com/Terennikov/russian-travel"
                 target="_blank">
                     <div className='Portfolio_Link'>
                         <h2 className='Portfolio_Link_Title'>Адаптивный сайт</h2>
                         <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
-            </Link>
-            <Link className="Link"
+                </Link>
+                </li>
+                <li>
+                <Link className="Link"
                 to="https://github.com/Terennikov/react-mesto-auth"
                 target="_blank">
                     <div className='Portfolio_Link Portfolio_LinkLast'>
@@ -30,6 +36,8 @@ function Portfolio() {
                         <h2 className='Portfolio_Link_Arrow'>↗</h2>
                     </div>
             </Link>
+                </li>
+            </ul>
             
         </div>
     </section>

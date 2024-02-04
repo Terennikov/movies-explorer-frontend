@@ -7,19 +7,32 @@ function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
-  const [isError, setIsError] = useState(false)
+  const [isEmailError, setIsEmailError] = useState(false)
+  const [isPasswError, setIsPasswError] = useState(false)
 
 
-  const sendError = () => {
-    setIsError(false)
-    setTimeout(() => {
-      setIsError(true)
-    }, 1000)
+  // const sendError = () => {
+  //   setIsError(false)
+  //   setTimeout(() => {
+  //     setIsError(true)
+  //   }, 1000)
+  // }
+  const validation = () => {
+    setIsEmailError(false)
+    setIsPasswError(false)
+    if (email === '') {
+      setIsEmailError('E-mail не может быть пустым')
+     }
+    if (password.length < 7) {
+      setIsPasswError('Пароль не может быть короче 7 символов')
+    }
+    if (password.length > 16) {
+      setIsPasswError('Пароль не может быть больше 16 символов')
+    }
   }
-
   return (
-    <section className='Login' id='Login'>
-      <div className="container Login__FullHeight">
+    <main className='Login' id='Login'>
+      <section className="container Login__FullHeight">
         <div className="Login__Wrap">
           <div className="Login__RegistrationBlock">
             <form className='Login_Form' id='Login_Form'>
@@ -34,7 +47,9 @@ function Login() {
                 inputValue={email} 
                 setInputValue={setEmail} 
                 inputAutoComplite={"email"}
+                inputError={isEmailError}
               />
+              
               <InputBlock
                 inputID={"Login__FormPassw"} 
                 inputName={"Пароль"} 
@@ -42,12 +57,12 @@ function Login() {
                 inputValue={password} 
                 setInputValue={setpassword} 
                 inputAutoComplite={"current-password"}
-                inputError={isError}
+                inputError={isPasswError}
               />
-              {isError ? (<p className='Login__Error'>Что-то пошло не так...</p>) : null}
+              
             </form>
             <div className="Login__ButtonsBlock">
-              <button className='Login__ButtonsBlockSignInButton' onClick={() => sendError()}>Войти</button>
+              <button type="submit" className='Login__ButtonsBlockSignInButton' onClick={() => validation()}>Войти</button>
               <div className='Login__BottomNavLinkBlock'>
                 <p className='Login__BottomNavLinkPrompt'>Ещё не зарегистрированы?</p>
                 <NavLink to='/signup' className='Login__BottomNavLink'>Регистрация</NavLink>
@@ -55,8 +70,8 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
 

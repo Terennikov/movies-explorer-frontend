@@ -68,6 +68,11 @@
     margin-top: 13px;
     border-top: 1px solid #E8E8E8;
 }
+.MoviesCard__SavedButton {
+    background: none;
+    border: 0;
+    padding: 0;
+}
 
 @media screen and (max-width:1279px) {
     .MoviesCard__MainData {
@@ -80,7 +85,7 @@
         max-width: 90%;
     }
     .MoviesCard__Duration {
-        margin-top: 25px;
+        margin-top: 22px;
     }
 }
 
@@ -94,7 +99,7 @@
     }
     .MoviesCard__Duration {
         font-size: 10px;
-        margin-top: 24px;
+        margin-top: 20px;
     }
     .MoviesCard__Delete {
         opacity: 1;

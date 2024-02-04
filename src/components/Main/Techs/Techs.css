@@ -23,7 +23,7 @@
 }
 .Techs_Description {
     margin-top: 0;
-    margin-bottom: 100px;
+    margin-bottom: 85px;
     max-width: 460px;
     text-align: center;
 
@@ -37,6 +37,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
+    padding-left: 0;
 }
 .Techs_Stak_Tile {
     margin: 0 5px;
@@ -62,7 +63,7 @@
     .Techs_Description{
         font-size: 12px;
         line-height: 18px;
-        margin-bottom: 83px;
+        margin-bottom: 68px;
         letter-spacing: -0.48px;
     }
     .Techs_Title {
@@ -113,7 +114,7 @@
         font-size: 11px;
         line-height: 16px;
         letter-spacing: -0.44px;
-        margin-bottom: 50px;
+        margin-bottom: 34px;
     }
     .grid {
         display: grid;

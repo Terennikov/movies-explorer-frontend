@@ -7,17 +7,17 @@ function Menu({isMenuOpen, closed}) {
 
     const location = useLocation()
   return (
-    <section className={`Menu ${isMenuOpen ? 'Menu__Opened' : 'Menu__Closed'}`} id='Menu'>
+    <div className={`Menu ${isMenuOpen ? 'Menu__Opened' : 'Menu__Closed'}`} id='Menu'>
         <div className="Menu_Block">
             <div className="Menu_CloseBlock">
-                <button className='Menu_CloseButton' onClick={closed}><img src={close} alt="" /></button>
+                <button type='button' className='Menu_CloseButton' onClick={closed}><img src={close} alt="" /></button>
             </div>
             <div className="Menu__Content">
-                <div className="Menu__TopButtons">
+                <nav className="Menu__TopButtons">
                     <NavLink to='/' className={`Menu__NavLink ${location.pathname === '/' ? 'Menu__NavLinkActive' : ''}`}>Главная</NavLink>
                     <NavLink to='/movies' className={`Menu__NavLink ${location.pathname === '/movies' ? 'Menu__NavLinkActive' : ''}`}>Фильмы</NavLink>
                     <NavLink to='/saved-movies' className={` Menu__NavLink ${location.pathname === '/saved-movies' ? 'Menu__NavLinkActive' : ''}`}>Сохранённые фильмы</NavLink>
-                </div>
+                </nav>
                 <div className="Menu_BottomButtons">
                 <NavLink to='/profile'
                             className={`header_toProfileBtn header_toProfileBtnWhite`}>
@@ -28,7 +28,7 @@ function Menu({isMenuOpen, closed}) {
                 </div>
             </div>
         </div>
-    </section>
+    </div>
   )
 }
 

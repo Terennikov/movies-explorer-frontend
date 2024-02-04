@@ -18,6 +18,11 @@
     margin-bottom: 20px;
     margin-top: 0;
 }
+.Footer_BottomRightContent {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
 
 .Footer_BottomContent {
     display: flex;

@@ -5,6 +5,7 @@
 }
 .Navigation_Btns {
     display: flex;
+    gap: 16px;
 }
 .Navigation_BtnsWhite a {
     color: #FFF;
@@ -27,7 +28,6 @@
     opacity: 0.8;
 } 
 .Navigation_navBtnMovies {
-    margin-right: 16px;
     transition: 0.5s;
 }
 .Navigation_navBtnMoviesActive {

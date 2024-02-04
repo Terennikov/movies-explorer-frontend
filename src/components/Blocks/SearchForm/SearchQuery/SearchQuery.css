@@ -17,6 +17,8 @@
     font-weight: 400;
     line-height: normal;
     padding: 0;
+    transition: 0.5s;
+    opacity: 0.6;
 }
 .SearchQuery__Input::placeholder {
     color: #A0A0A0;
@@ -24,6 +26,7 @@
 }
 .SearchQuery__Input:focus {
     outline: none;
+    opacity: 1;
 }
 .SearchQuery__Input:focus::placeholder{
     color: rgba(52, 87, 245, 0.493);
@@ -42,6 +45,11 @@
 }
 .SearchQuery__Button:hover{
     background: rgba(52, 87, 243, 0.8);
+}
+.SearchQuery__Button:disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
 }
 
 @media screen and (max-width:1279px) {

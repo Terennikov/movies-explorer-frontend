@@ -43,6 +43,13 @@
 .col-12 {
     width: 100%;
 }
+li {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style-type: none;
+}
 
 @media screen and (max-width:1279px) {
     .container {

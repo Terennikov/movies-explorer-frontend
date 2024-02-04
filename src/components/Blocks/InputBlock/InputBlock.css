@@ -32,6 +32,13 @@
 .InputBlock__InputError {
     color: #FF3055;
 }
+.Login__TextError {
+    margin: 0;
+    padding-top: 6px;
+    color: #FF3055;
+    font-size: 10px;
+    font-weight: 400;
+}
 #Register__FormPassw {
     margin-bottom: 0;
 }

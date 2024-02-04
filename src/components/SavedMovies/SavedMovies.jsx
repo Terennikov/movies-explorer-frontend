@@ -13,12 +13,12 @@ function SavedMovies() {
   }, [isShort])
 
   return (
-    <section className='SavedMovies' id='SavedMovies'>
       <Layout>
+        <section className='SavedMovies' id='SavedMovies'>
         <SearchForm isShort={setIsShort}></SearchForm>
         <MoviesCardList movies={movies} searchQuery={""} isMovieSaved={true}/>
+        </section>
       </Layout>
-    </section>
   )
 }
 

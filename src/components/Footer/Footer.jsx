@@ -10,7 +10,8 @@ function Footer() {
             </div>
             <div className="Footer_BottomContent">
                 <h4 className="Footer_BottomContentYear">© 2020</h4>
-                <div className="Footer_BottomRightContent">
+                <ul className="Footer_BottomRightContent">
+                    <li>
                     <Link
                         className="Footer_BottomContentYandexPracticum"
                         to="https://github.com/h1ze"
@@ -18,6 +19,8 @@ function Footer() {
                     >
                         Яндекс.Практикум
                     </Link>
+                    </li>
+                    <li>
                     <Link
                         className="Footer_BottomContentGitLink"
                         to="https://github.com/Terennikov"
@@ -25,7 +28,8 @@ function Footer() {
                     >
                         Github
                     </Link>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </footer>

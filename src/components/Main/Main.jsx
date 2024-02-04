@@ -8,15 +8,15 @@ import Layout from '../Layout/Layout'
 
 function Main() {
   return (
-    <main className='Main' id='Main'>
       <Layout>
+        <section className='Main' id='Main'>
         <Promo></Promo>
         <AboutProject></AboutProject>
         <Techs></Techs>
         <AboutMe></AboutMe>
         <Portfolio></Portfolio>
+        </section>
       </Layout>
-    </main>
   )
 }
 

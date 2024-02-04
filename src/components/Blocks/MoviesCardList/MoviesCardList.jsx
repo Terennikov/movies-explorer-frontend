@@ -35,7 +35,7 @@ function MoviesCardList({movies, isMovieSaved, searchQuery}) {
   return (
     <section className={`MoviesCardList ${ location.pathname === '/saved-movies' ? 'FullHeightMovies' : ''}`} id='MoviesCardList'>
         <div className="container MoviesCardList_Container">
-            <div className="MoviesCardList_Wraper">
+            <ul className="MoviesCardList_Wraper">
                 {isMovieSaved 
                 ? 
                 (
@@ -65,7 +65,7 @@ function MoviesCardList({movies, isMovieSaved, searchQuery}) {
                             />
                     )
                 )}
-            </div>
+            </ul>
         </div>
     </section>
   )

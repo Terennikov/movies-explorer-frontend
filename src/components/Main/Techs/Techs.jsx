@@ -8,17 +8,17 @@ function Techs() {
         <div className="container">
             <SectionHeading>Технологии</SectionHeading>
             <div className="Techs_Content">
-                <h2 className="Techs_Title">7 технологий</h2>
+                <h3 className="Techs_Title">7 технологий</h3>
                 <p className="Techs_Description">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-                <div className="Techs_Stak grid">
-                    <h4 className="Techs_Stak_Tile Techs_StakTileFirst">HTML</h4>
-                    <h4 className="Techs_Stak_Tile">CSS</h4>
-                    <h4 className="Techs_Stak_Tile">JS</h4>
-                    <h4 className="Techs_Stak_Tile">React</h4>
-                    <h4 className="Techs_Stak_Tile">Git</h4>
-                    <h4 className="Techs_Stak_Tile">Express.js</h4>
-                    <h4 className="Techs_Stak_Tile Techs_StakTileLast">mongoDB</h4>
-                </div>
+                <ul className="Techs_Stak grid">
+                    <li className="Techs_Stak_Tile Techs_StakTileFirst">HTML</li>
+                    <li className="Techs_Stak_Tile">CSS</li>
+                    <li className="Techs_Stak_Tile">JS</li>
+                    <li className="Techs_Stak_Tile">React</li>
+                    <li className="Techs_Stak_Tile">Git</li>
+                    <li className="Techs_Stak_Tile">Express.js</li>
+                    <li className="Techs_Stak_Tile Techs_StakTileLast">mongoDB</li>
+                </ul>
             </div>
         </div>
         </div>

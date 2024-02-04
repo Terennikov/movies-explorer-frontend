@@ -13,17 +13,17 @@ function Movies() {
   }, [isShort])
 
   return (
-    <section className='Movies' id='Movies'>
       <Layout>
+        <section className='Movies' id='Movies'>
           <SearchForm isShort={setIsShort} ></SearchForm>
           <MoviesCardList movies={movies} searchQuery={""} isMovieSaved={false}/>
             <div className="container">
               <div className='Movies_LoadMoreBlock'>
-                <button className='Movies_LoadMoreButton'>Еще</button>
+                <button type='button' className='Movies_LoadMoreButton'>Еще</button>
               </div>
             </div>
+            </section>
       </Layout>
-    </section>
 
   )
 }

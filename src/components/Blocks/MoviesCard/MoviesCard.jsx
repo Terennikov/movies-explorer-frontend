@@ -17,21 +17,20 @@ function MoviesCard({imgsrc, name, isSaved, duration, isMovieSaved}) {
     }
 
   return (
-    <div className='MoviesCard'>
+    <li className='MoviesCard'>
         <div className="MoviesCard__MainData">
             <img className="MoviesCard__Img" src={imgsrc} alt={name} />
             <div className="MoviesCard__NameAndSaved">
-                <h4 className="MoviesCard__Name">{name}</h4>
+                <h2 className="MoviesCard__Name">{name}</h2>
                 {isMovieSaved ? 
-                    (
-                    <img className="MoviesCard__Delete" src={Delete} alt="Удалить" />
-                    ) : save ? (<img src={LikeActive} alt="Активный Лайк" className="MoviesCard__SavedActive" onClick={() => saveFunc() }/>) : (<img src={Like} alt="Лайк" className="MoviesCard__Saved" onClick={() => saveFunc() }/>)
+                    (<button type='button' className='MoviesCard__SavedButton'><img className="MoviesCard__Delete" src={Delete} alt="Удалить" /></button>
+                    ) : save ? (<button type='button' className='MoviesCard__SavedButton'><img src={LikeActive} alt="Активный Лайк" className="MoviesCard__SavedActive" onClick={() => saveFunc() }/></button>) : (<button type='button' className='MoviesCard__SavedButton'><img src={Like} alt="Лайк" className="MoviesCard__Saved" onClick={() => saveFunc() }/></button>)
                 
                 }
             </div>
         </div>
         <p className="MoviesCard__Duration">{duration}</p>
-    </div>
+    </li>
   )
 }
 

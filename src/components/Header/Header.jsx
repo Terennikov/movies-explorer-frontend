@@ -19,8 +19,8 @@ function Header({ isSignIn, menuOpenHandler }) {
                 <div className="col-3">
                 <NavLink to='/'><img className="Logo" src={Logo} alt="Логотип" /></NavLink>
                 </div>
-                <div className="col-6">
-                    <div className="navBlock nav1280">
+                <div className="col-6 navBlock">
+                    <div className="nav1280">
                         {!isSignIn ? null : 
                             (<Navigation location={location.pathname} isMainRoute={location.pathname === '/' ? true : false}></Navigation>)
                         }
@@ -37,7 +37,7 @@ function Header({ isSignIn, menuOpenHandler }) {
                                 {location.pathname === '/' ? (<img src={People_Icon} alt="Человек" />) : (<img src={People_Icon_Gray} alt="Серый человек" />)}
                                 
                             </NavLink>
-                            <button className='Header__menuBurger ' onClick={() => menuOpenHandler()}>
+                            <button type='button' className='Header__menuBurger ' onClick={() => menuOpenHandler()}>
                             {location.pathname === '/' ? (<img src={MenuIconWhite} alt="Меню"/>)
                             :
                             (<img src={MenuIcon} alt="Меню"/>)}
@@ -45,10 +45,10 @@ function Header({ isSignIn, menuOpenHandler }) {
                             </div>
                         )
                          : 
-                        (<div className='signInUpBtns'>
-                        <NavLink to='/signup'><p className={`signUp ${location.pathname !== '/' ? `signUpBlack`: null} `}>Регистрация</p></NavLink>
+                        (<nav className='signInUpBtns'>
+                        <NavLink to='/signup' className={`signUp ${location.pathname !== '/' ? `signUpBlack`: ''} `}>Регистрация</NavLink>
                         <NavLink to='/signup' className={`signIn`}>Войти</NavLink>
-                    </div>)}
+                    </nav>)}
                 </div>
             </div>
         </div>

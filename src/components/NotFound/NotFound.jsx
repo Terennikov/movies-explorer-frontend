@@ -5,16 +5,16 @@ function NotFound() {
   const navigate = useNavigate()
 
   return (
-    <section className='NotFound' id='NotFound'>
+    <main className='NotFound' id='NotFound'>
       <div className="container Error_Content767">
         <div className="ErrorContainer">
           <h1 className='NotFound__ErrorStatusNum'>404</h1>
-          <h4 className='NotFound__ErrorStatus'>Страница не найдена</h4>
+          <h2 className='NotFound__ErrorStatus'>Страница не найдена</h2>
         </div>
         <p className='NotFound__GoBackButton' onClick={() => navigate(-1)}>Назад</p>
         {/* Возвращение назад */}
       </div>
-    </section>
+    </main>
   )
 }
 

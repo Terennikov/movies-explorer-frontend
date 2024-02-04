@@ -23,14 +23,14 @@ function Profile() {
   }, [name, email]);
 
   return (
-    <section className="Profile" id="Profile">
       <Layout isDisableFooter={true}>
+        <section className="Profile" id="Profile">
         <div className="container Profile__FullHeight">
           <div className="Profile__Content">
             <h1 className="Profile__ContentWelcome">Привет, Виталий!</h1>
 
             <form className="Profile__UserData">
-                <div type="text" className="Profile__UserDataName">
+                <div className="Profile__UserDataName">
                   <p className="Profile__UserDataText">Имя</p>
                   <input
                     type="text"
@@ -41,7 +41,7 @@ function Profile() {
                     placeholder="Имя"
                   />
                 </div>
-                <div type="text" className="Profile__UserDataEmail">
+                <div className="Profile__UserDataEmail">
                   <p className="Profile__UserDataText">E-mail</p>
                   <input
                     type="text"
@@ -87,8 +87,8 @@ function Profile() {
             </div>
           </div>
         </div>
+        </section>
       </Layout>
-    </section>
   );
 }
 
