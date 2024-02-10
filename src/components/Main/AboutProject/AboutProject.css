@@ -1,0 +1,144 @@
+.AboutProject {
+    width: 100%;
+    font-family: 'Inter', 'Arial', sans-serif;
+    margin-bottom: 111px;
+}
+
+.AboutProjects_Description {
+    padding-top: 70px;
+    margin-bottom: 110px;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.AboutProjects_DescriptionTitle {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    margin-bottom: 26px;
+    max-width: 550px;
+    margin-top: 0;
+}
+.AboutProjects_DescriptionText {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    max-width: 550px;
+    margin: 0;
+}
+.AboutProjects_ProgressBar {
+    display: flex;
+    width: 100%;
+}
+
+.AboutProjects_bar p {
+    text-align: center;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.AboutProjects_ProgressBarComplited {
+    width: 20%;
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px; /* 121.429% */
+}
+.AboutProjects_ProgressBarComplited .AboutProjects_bar {
+    background: #2BE080;
+    padding: 9px 14px;
+}
+
+.AboutProjects_ProgressBarNotComplited {
+    width: 80%;
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px; /* 121.429% */
+}
+.AboutProjects_ProgressBarNotComplited .AboutProjects_bar {
+    background: #F2F2F2;
+    padding: 9px 14px;
+}
+
+@media screen and (max-width:1279px) {
+    .AboutProject {
+        margin-bottom: 77px;
+        width: 94.6%;
+    }
+    .AboutProjects_DescriptionTitle {
+        margin-bottom: 22px;
+    }
+    .AboutProjects_DescriptionText {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .AboutProjects_Description {
+        margin-bottom: 93px;
+        gap: 30px;
+    }
+    .AboutProjects_ProgressBarComplited {
+        width: 21%;
+    }
+
+}
+@media screen and (max-width:767px) {
+    .AboutProject {
+        margin-bottom: 69px;
+        width: 97%;
+    }
+    .AboutProjects_Description {
+        padding-top: 62px;
+        flex-direction: column;
+        margin-bottom: 32px;
+    }
+    .AboutProject__FullWidth {
+        width: 100%;
+    }
+    .AboutProjects_DescriptionTitle {
+        margin-bottom: 16px;
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+    .AboutProjects_DescriptionText {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 28px;
+    }
+    .AboutProjects_ProgressBarComplited {
+        width: 44%;
+    }
+    .AboutProjects_ProgressBarComplited .AboutProjects_bar {
+        padding: 11px 10px;
+    }
+    .AboutProjects_ProgressBarNotComplited .AboutProjects_bar {
+        padding: 11px 10px;
+    }
+    .AboutProjects_BackEnd {
+        padding-top: 8px;
+        margin: 0;
+        font-size: 11px;
+    }
+    .AboutProjects_FrontEnd {
+        padding-top: 8px;
+        margin: 0;
+        font-size: 11px;
+    }
+    .AboutProjects_bar p {
+        font-size: 11px;
+    }
+}

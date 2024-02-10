@@ -1,0 +1,86 @@
+.Footer {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    color: #000;
+    padding-top: 79px;
+    font-size: 13px;
+}
+
+.Footer_Author {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #E8E8E8;
+}
+.Footer_Author_Text {
+    color: #A0A0A0;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.Footer_BottomRightContent {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
+
+.Footer_BottomContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer_BottomContentYear {
+    margin: 20px 0;
+    font-weight: 400;
+    line-height: normal;
+}
+.Footer_BottomContentYandexPracticum {
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+    margin: 20px 20px 20px 0;
+    transition: 0.5s;
+}
+.Footer_BottomContentYandexPracticum:hover {
+    opacity: 0.7;
+}
+.Footer_BottomContentGitLink {
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+    margin: 20px 0;
+    transition: 0.5s;
+}
+.Footer_BottomContentGitLink:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width:767px) {
+    .Footer_Author_Text {
+        font-size: 12px;
+    }
+    .Footer_BottomContent {
+        flex-direction: column-reverse;
+    }
+    .Footer_BottomRightContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .Footer_BottomContentYandexPracticum {
+        margin: 31px 0 0 0;
+        font-size: 12px;
+    }
+    .Footer_BottomContentGitLink {
+        margin: 12px 0 0 0;
+        font-size: 12px;
+    }
+    .Footer_BottomContentYear {
+        margin: 30px 0 20px 0;
+        font-weight: 400;
+        color: #A0A0A0;
+        font-size: 12px;
+        letter-spacing: -0.1px;
+    }
+}

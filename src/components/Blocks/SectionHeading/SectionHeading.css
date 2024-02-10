@@ -1,0 +1,27 @@
+.SectionHeading {
+    width: 100%;
+    color: #000;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    border-bottom: 1px solid black;
+    padding-bottom: 23px;
+    margin: 0;
+}
+
+/* @media screen and (max-width:1279px) {
+    .SectionHeading {
+        width: 92%;
+    }
+} */
+
+@media screen and (max-width:767px) {
+    .SectionHeading {
+        padding-bottom: 28px;
+        font-size: 18px;
+        letter-spacing: -0.72px
+    }
+}

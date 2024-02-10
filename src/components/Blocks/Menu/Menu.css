@@ -1,0 +1,78 @@
+.Menu {
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    line-height: normal;
+}
+.Menu_Block {
+    width: 77%;
+    max-width: 520px;
+    background-color: white;
+    padding-right: 23px;
+    padding-top: 23px;
+}
+.Menu_CloseBlock {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.Menu_CloseButton {
+    border: 0;
+    background: transparent;
+}
+.Menu__Content {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.Menu__TopButtons {
+    padding-top: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Menu__NavLink {
+    margin: 0;
+    margin-bottom: 28px;
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    transition: 0.5s;
+}
+.Menu__NavLink:hover {
+    opacity: 0.7;
+}
+.Menu__NavLinkActive {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+.Menu__Opened {
+    display: flex;
+    justify-content: flex-end;
+}
+.Menu__Closed {
+    display: none;
+}
+
+@media screen and (max-width:767px) {
+    .Menu_Block {
+        width: 100%;
+        max-width: none;
+        padding-right: 13px;
+        padding-top: 13px;
+    }
+    .Menu__NavLink {
+        margin-bottom: 24px;
+    }
+    .Menu__Content{
+        height: 87vh;
+    }
+}

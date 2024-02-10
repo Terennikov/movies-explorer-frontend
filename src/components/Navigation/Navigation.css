@@ -1,0 +1,35 @@
+.Navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Navigation_Btns {
+    display: flex;
+    gap: 16px;
+}
+.Navigation_BtnsWhite a {
+    color: #FFF;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.Navigation_BtnsBlack a {
+    color: #000000;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.Navigation_BtnsBlack .Navigation_navBtnMovies:hover {
+    opacity: 0.8;
+} 
+.Navigation_BtnsWhite .Navigation_navBtnMovies:hover {
+    opacity: 0.8;
+} 
+.Navigation_navBtnMovies {
+    transition: 0.5s;
+}
+.Navigation_navBtnMoviesActive {
+    font-weight: 500;
+}

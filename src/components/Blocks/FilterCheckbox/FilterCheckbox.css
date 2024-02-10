@@ -1,0 +1,62 @@
+.FilterCheckbox_Switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 14px;
+}
+
+.FilterCheckbox_Switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.FilterCheckbox_Slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #EBEBEB;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.FilterCheckbox_Slider:hover {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.FilterCheckbox_Slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #F5F5F5;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .FilterCheckbox_Slider {
+  background-color: #2BE080;
+}
+
+input:checked + .FilterCheckbox_Slider:before {
+    background-color: white;
+  }
+
+input:checked + .FilterCheckbox_Slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.FilterCheckbox_Slider.FilterCheckbox_Round {
+  border-radius: 20px;
+}
+
+.FilterCheckbox_Slider.FilterCheckbox_Round:before {
+  border-radius: 50%;
+}
