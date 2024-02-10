@@ -29,6 +29,16 @@
 .Login__ButtonsBlock {
     padding-bottom: 70px;
 }
+.Login__Button_Top_Error {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 10px;
+    color: #FF3055;
+    font-size: 10px;
+    font-weight: 400;
+}
 .Login__ButtonsBlockSignInButton {
     cursor: pointer;
     border: 0;

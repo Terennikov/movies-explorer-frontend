@@ -17,6 +17,8 @@
 .MoviesCard__Img {
     width: 100%;
     margin-bottom: 6px;
+    height: 151px;
+    object-fit: cover;
 }
 .MoviesCard__Saved {
     transition: 0.3s;
@@ -80,6 +82,8 @@
     }
     .MoviesCard__Img {
         margin-bottom: 6px;
+        height: 190px;
+        overflow: hidden;
     }
     .MoviesCard__Name {
         max-width: 90%;
@@ -96,6 +100,7 @@
     }
     .MoviesCard__Img {
         margin-bottom: 7px;
+        height: 168px;
     }
     .MoviesCard__Duration {
         font-size: 10px;

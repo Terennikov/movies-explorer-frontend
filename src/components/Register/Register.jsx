@@ -1,39 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import Logo from '../../images/logo.svg'
 import { NavLink } from 'react-router-dom'
 import InputBlock from '../Blocks/InputBlock/InputBlock'
+import useFormWithValidation from '../../hooks/useFormValidation';
 
-function Register() {
+function Register({error, handleRegister}) {
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setpassword] = useState('')
-
-  const [isEmailError, setIsEmailError] = useState(false)
-  const [isPasswError, setIsPasswError] = useState(false)
-  const [isNameError, setIsNameError] = useState(false)
+  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
 
-  const validation = () => {
-    setIsEmailError(false)
-    setIsPasswError(false)
-    setIsNameError(false)
-    if (email === '') {
-      setIsEmailError('E-mail не может быть пустым')
-     }
-    if (password.length < 7) {
-      setIsPasswError('Пароль не может быть короче 7 символов')
-    }
-    if (password.length > 16) {
-      setIsPasswError('Пароль не может быть больше 16 символов')
-    }
-    if (name < 2) {
-      setIsNameError('Имя не может быть короче 2 символов')
-    }
-    if (name > 30) {
-      setIsNameError('Имя не может быть больше 30 символов')
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleRegister(values);
   }
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <main className='Register' id='Register'>
@@ -46,35 +29,44 @@ function Register() {
               </div>
               <h1 className='Register__Title'>Добро пожаловать!</h1>
               <InputBlock
-                inputID={"Register__FormName"} 
-                inputName={"Имя"} 
-                inputType={"text"} 
-                inputValue={name} 
-                setInputValue={setName} 
-                inputAutoComplite={"name"}
-                inputError={isNameError}
+                input_id={"Register__FormName"} 
+                input_name={"Имя"} 
+                input_type={"text"} 
+                input_value={values.name || ''}  
+                onChange={handleChange}  
+                input_auto_complite={"name"}
+                input_error={errors.name}
+                minLength="2"
+                maxLength="30"
+                pattern="^[A-Za-zА-Яа-яЁё \s]+$"
+                input_name_eng={"name"}
+                required
               />
               <InputBlock 
-                inputID={"Register__FormEmail"} 
-                inputName={"E-mail"} 
-                inputType={"email"} 
-                inputValue={email} 
-                setInputValue={setEmail} 
-                inputAutoComplite={"email"}
-                inputError={isEmailError}
+                input_id={"Register__FormEmail"} 
+                input_name={"E-mail"} 
+                input_type={"email"} 
+                input_value={values.email || ''}  
+                onChange={handleChange} 
+                input_auto_complite={"email"}
+                input_error={errors.email}
+                input_name_eng={"email"}
+                required
               />
               <InputBlock
-                inputID={"Register__FormPassw"} 
-                inputName={"Пароль"} 
-                inputType={"password"} 
-                inputValue={password} 
-                setInputValue={setpassword} 
-                inputAutoComplite={"new-password"}
-                inputError={isPasswError}
+                input_id={"Register__FormPassw"} 
+                input_name={"Пароль"} 
+                input_type={"password"} 
+                input_value={values.email || ''}  
+                onChange={handleChange} 
+                input_error={errors.password}
+                input_name_eng={"password"}
+                required
               />
             </form>
             <div className="Register__ButtonsBlock">
-              <button type='submit' className='Register__ButtonsBlockSignUpButton' onClick={() => validation()}>Зарегистрироваться</button>
+            {error ? <span className='Login__Button_Top_Error'>{error}</span> : null}
+              <button disabled={!isValid} type='submit' className='Register__ButtonsBlockSignUpButton' onClick={(e) => handleSubmit(e)}>Зарегистрироваться</button>
               <div className='Register__BottomNavLinkBlock'>
                 <p className='Register__BottomNavLinkPrompt'>Уже зарегистрированы?</p>
                 <NavLink to='/signin' className='Register__BottomNavLink'>Войти</NavLink>

@@ -6,9 +6,9 @@ import AboutMe from './AboutMe/AboutMe'
 import Portfolio from './Portfolio/Portfolio'
 import Layout from '../Layout/Layout'
 
-function Main() {
+function Main({loggedIn}) {
   return (
-      <Layout>
+      <Layout loggedIn={loggedIn}>
         <section className='Main' id='Main'>
         <Promo></Promo>
         <AboutProject></AboutProject>

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import Menu from '../Blocks/Menu/Menu'
+import React, { useState } from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import Menu from "../Blocks/Menu/Menu";
 
-function Layout({ children, isDisableFooter }) {
-
+function Layout({ loggedIn, children, isDisableFooter }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  useEffect(() => {
-    console.log(isMenuOpen);
-  }, [isMenuOpen]);
 
   const menuOpenHandler = () => {
-      setIsMenuOpen(true);
+    setIsMenuOpen(true);
   };
 
   const menuCloseHandler = () => {
@@ -19,14 +15,13 @@ function Layout({ children, isDisableFooter }) {
   };
 
   return (
-    <div className='Layout' id='Layout'>
-      <Header isSignIn={true} menuOpenHandler={menuOpenHandler}></Header>
-      <main className='Layout__PageContent'>{children}
-      </main>
-      {isDisableFooter ? null : (<Footer></Footer>)}
-      <Menu isMenuOpen={isMenuOpen} closed={menuCloseHandler}/>
+    <div className="Layout" id="Layout">
+      <Header isSignIn={loggedIn} menuOpenHandler={menuOpenHandler}></Header>
+      <main className="Layout__PageContent">{children}</main>
+      {isDisableFooter ? null : <Footer></Footer>}
+      <Menu isMenuOpen={isMenuOpen} closed={menuCloseHandler} />
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

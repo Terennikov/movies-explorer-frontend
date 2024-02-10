@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React from "react";
 
-function SearchQuery() {
-  const search= (e) => {
-    e.preventDefault()
-  }
-
-  const [searchValue, setSearchValue] = useState('')
-  const [isDisabledSearchButton, setIsDisabledSearchButton] = useState(true)
-
-  useEffect(() => {
-    if (searchValue !== '') {
-      setIsDisabledSearchButton(false)
-    }
-    else {
-      setIsDisabledSearchButton(true)
-    }
-  },[searchValue])
-
+function SearchQuery(props) {
   return (
-    <div className='SearchQuery' id='SearchQuery'>
-        <div className="SearchQuery__Block">
-            <input className='SearchQuery__Input' type="text" placeholder='Фильм' value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
-            <button type='submit' className='SearchQuery__Button' disabled={isDisabledSearchButton} onClick={(e) => search(e)}>Найти</button>
-        </div>
-
+    <div className="SearchQuery" id="SearchQuery">
+      <div className="SearchQuery__Block">
+        <input
+          name={props.name}
+          autoComplete={props.autoComplete}
+          value={props.value || ""}
+          onChange={props.change_handler}
+          required
+          className="SearchQuery__Input"
+          type="text"
+          placeholder="Фильм"
+        />
+        <button
+          type="submit"
+          className="SearchQuery__Button"
+          disabled={props.value === "" ? true : false}
+          onClick={props.subm_handle}
+        >
+          Найти
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default SearchQuery
+export default SearchQuery;

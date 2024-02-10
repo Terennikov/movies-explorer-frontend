@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
 
-function InputBlock({inputName, inputID, inputType, inputValue, setInputValue, inputAutoComplite, inputError}) {
+function InputBlock(
+  props
+  ) {
     const [isError, setIsError] = useState(false)
     
     useEffect(() => {
-        setIsError(inputError)
-    }, [inputError]);
+        setIsError(props.inputerror)
+    }, [props.inputerror]);
 
-    const setInput = (data) => {
-        setInputValue(data)
-        setIsError(false)
-    }
   return (
-    <div className='InputBlock' id={inputName}>
-        <p className='InputBlock__Name'>{inputName}</p>
-    <input placeholder={inputName} id={inputID} className={`InputBlock__Input ${isError ? 'InputBlock__InputError' : ''}`} type={inputType} value={inputValue} onChange={(e) => e.target.value ? setInput(e.target.value) : setInput('')} autoComplete={inputAutoComplite ? inputAutoComplite : null} />
-    {inputError ? ( <p className='Login__TextError'>{inputError}</p> ) : null}
+    <div className='InputBlock' id={props.input_name}>
+        <p className='InputBlock__Name'>{props.input_name}</p>
+    <input 
+     className={`InputBlock__Input ${isError ? 'InputBlock__InputError' : ''}`} 
+     placeholder={props.input_name}
+     name={props.input_name_eng}
+     id={props.input_id}
+     autoComplete={props.autoComplete ? props.autoComplete : 'none'}
+     onChange={props.onChange}
+     type={props.input_type}
+     {...props}
+     />
+    <span className="Login__TextError">{props.input_error}</span>
     </div>
   )
 }
