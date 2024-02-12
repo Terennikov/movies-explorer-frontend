@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api-terennikov.nomoredomainsmonster.ru';
 const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 const SHORTMOVIES_DURATION = 40;
 const DEVICE_PARAMS = {
