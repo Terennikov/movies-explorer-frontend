@@ -9,6 +9,7 @@
 .SearchForm_IsShort {
     display: flex;
     align-items: center;
+    padding-top: 32px;
 }
 .SearchForm_IsShortText {
     font-size: 13px;

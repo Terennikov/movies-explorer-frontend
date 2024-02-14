@@ -1,9 +1,12 @@
+
 import { MOVIES_URL } from './constants';
+
 
 class MoviesApi {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
   }
+  
 
   async _requestResult(res) {
     const result = await res.json();

@@ -34,11 +34,8 @@ function filterMovies(movies, userQuery, shortMoviesCheckbox) {
     );
   });
 
-  if (shortMoviesCheckbox) {
-    return filterShortMovies(moviesByUserQuery);
-  } else {
+  
     return moviesByUserQuery;
-  }
 }
 function transformDuration(duration) {
   const hours = Math.trunc(duration / 60);

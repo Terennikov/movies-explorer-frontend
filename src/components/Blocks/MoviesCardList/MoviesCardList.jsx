@@ -11,6 +11,7 @@ function MoviesCardList({
   savedMoviesList,
   onLikeClick,
   onDeleteClick,
+  length
 }) {
   const screenWidth = useScreenWidth();
   const { desktop, tablet, mobile } = DEVICE_PARAMS;
@@ -20,6 +21,7 @@ function MoviesCardList({
     total: 12,
     more: 3,
   });
+  const [isAllMoviesLoaded, setIsAllMoviesLoad] = useState(false)
 
   const location = useLocation();
 
@@ -41,7 +43,20 @@ function MoviesCardList({
       const res = moviesList.filter((item, i) => i < cardsShowDetails.total);
       setShowMovieList(res);
     }
+    if (moviesList.length === 0) {
+      setShowMovieList([])
+    }
   }, [moviesList, cardsShowDetails.total]);
+  useEffect(() => {
+    console.log(showMovieList.length, moviesList.length, length);
+    if (showMovieList.length === length || showMovieList.length === moviesList.length) {
+      setIsAllMoviesLoad(true)
+    }
+    else {
+      setIsAllMoviesLoad(false)
+    }
+  }, [showMovieList, moviesList.length, length])
+
 
   const handleClickMoreMovies = () => {
     const start = showMovieList.length;
@@ -74,8 +89,11 @@ function MoviesCardList({
               />
           )}
         </ul>
+        {showMovieList.length === 0 ? (
+          <p>Ничего не найдено</p>
+        ) : null}
       </div>
-      {location.pathname === "/movies" ? (<div className="container">
+      {location.pathname === "/movies" && !isAllMoviesLoaded ? (<div className="container">
         <div className="Movies_LoadMoreBlock">
           <button type="button" className="Movies_LoadMoreButton" onClick={handleClickMoreMovies}>
             Еще

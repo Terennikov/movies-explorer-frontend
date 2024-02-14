@@ -6,7 +6,7 @@ const DEVICE_PARAMS = {
     width: 1280,
     cards: {
       total: 12,
-      more: 3,
+      more: 4,
     },
   },
   tablet: {

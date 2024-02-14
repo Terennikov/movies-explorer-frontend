@@ -8,7 +8,7 @@ function SearchQuery(props) {
           name={props.name}
           autoComplete={props.autoComplete}
           value={props.value || ""}
-          onChange={props.change_handler}
+          onChange={(e) => props.change_handler(e)}
           required
           className="SearchQuery__Input"
           type="text"
@@ -17,7 +17,6 @@ function SearchQuery(props) {
         <button
           type="submit"
           className="SearchQuery__Button"
-          disabled={props.value === "" ? true : false}
           onClick={props.subm_handle}
         >
           Найти

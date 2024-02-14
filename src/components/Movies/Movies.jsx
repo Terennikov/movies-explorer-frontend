@@ -10,13 +10,15 @@ import {
 import moviesApi from "../../utils/MoviesApi.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 
-function Movies({
+const Movies = ({
   loggedIn,
   setIsLoader,
   savedMoviesList,
   onLikeClick,
   onDeleteClick,
-}) {
+}) =>
+ {
+
   const currentUser = useContext(CurrentUserContext);
 
   const [isShort, setIsShort] = useState(false);
@@ -27,7 +29,9 @@ function Movies({
   const [errors, setErrors] = useState(false)
 
   const handleSetFilteredMovies = (movies, userQuery, shortMoviesCheckbox) => {
+    setIsLoader(true);
     const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
+    console.log(moviesList.length);
     if (moviesList.length === 0) {
       setNotFoundMovies(true);
     } else {
@@ -41,18 +45,26 @@ function Movies({
       `${currentUser.email} - movies`,
       JSON.stringify(moviesList)
     );
+    // setIsLoader(false)
   }
+  useEffect(() => {
+    console.log(NotFoundMovies);
+  }, [NotFoundMovies])
+
   const handleSearchSubmit = (inputValue) => {
     localStorage.setItem(`${currentUser.email} - movieSearch`, inputValue);
     localStorage.setItem(`${currentUser.email} - shortMovies`, isShort);
+    
 
     if (isAllMovies.length === 0) {
       setIsLoader(true);
       moviesApi
         .getMovies()
         .then((movies) => {
-          setIsAllMovies(movies);
+          
+            setIsAllMovies(movies);
           handleSetFilteredMovies(transformMovies(movies), inputValue, isShort);
+          
         })
         .catch(() =>
           setErrors("Ошибка сервера")
@@ -66,7 +78,12 @@ function Movies({
   const handleShortFilms = () => {
     setIsShort(!isShort);
     if (!isShort) {
-      setFilteredMovies(filterShortMovies(initialMovies));
+      if (filterShortMovies(initialMovies).length === 0) {
+        setFilteredMovies(filterShortMovies(initialMovies));
+      }
+      else{
+        setFilteredMovies([]);
+      }
     } else {
       setFilteredMovies(initialMovies);
     }
@@ -97,6 +114,23 @@ function Movies({
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    if (localStorage.getItem(`${currentUser.email} - movies`)) {
+      const movies = JSON.parse(
+        localStorage.getItem(`${currentUser.email} - movies`)
+      );
+      setInitialMovies(movies);
+      if (
+        isShort
+      ) {
+        setFilteredMovies(filterShortMovies(movies));
+      } else {
+        setFilteredMovies(movies);
+      }
+    }
+    // eslint-disable-next-line
+  }, [isShort]);
+
   return (
     <Layout loggedIn={loggedIn}>
       <section className="Movies" id="Movies">
@@ -111,9 +145,10 @@ function Movies({
             savedMoviesList={savedMoviesList}
             onLikeClick={onLikeClick}
             onDeleteClick={onDeleteClick}
+            length = {initialMovies.length}
           />
         ) : (
-          <div className="constainer SavedMovies__NotFound">
+          <div className="container SavedMovies__NotFound">
             <p>Фильмы не найдены</p>
             {errors ? <p>{errors}</p> : null}
           </div>

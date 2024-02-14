@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import InputBlock from '../Blocks/InputBlock/InputBlock'
 import Logo from '../../images/logo.svg'
@@ -6,23 +6,27 @@ import useFormWithValidation from '../../hooks/useFormValidation'
 
 function Login({handleLogin, error}) {
 
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, errors, isValid } = useFormWithValidation();
+
+  
 
   const handleSubmit = (e) => {
+    localStorage.setItem(`--loginEmail`, values.email);
+    localStorage.setItem(`--loginPassword`, values.password);
     e.preventDefault();
     handleLogin(values);
   }
 
-  useEffect(() => {
-    resetForm();
-  }, [resetForm]);
+  // useEffect(() => {
+  //   saveForm();
+  // }, [saveForm]);
 
   return (
     <main className='Login' id='Login'>
       <section className="container Login__FullHeight">
         <div className="Login__Wrap">
           <div className="Login__RegistrationBlock">
-            <form className='Login_Form' id='Login_Form'>
+            <form className='Login_Form' id='Login_Form' noValidate>
             <div className="Login__LogoBlock">
                 <NavLink to='/'><img src={Logo} className="Logo" alt="Логотип" /></NavLink>
               </div>
@@ -31,7 +35,7 @@ function Login({handleLogin, error}) {
                 input_id={"Login__FormEmail"} 
                 input_name={"E-mail"} 
                 input_type={"email"} 
-                input_value={values.email || ''} 
+                input_value={values.email || localStorage.getItem(`--loginEmail`) || ''} 
                 onChange={handleChange} 
                 input_auto_complite={"email"}
                 input_name_eng={"email"}
@@ -43,7 +47,7 @@ function Login({handleLogin, error}) {
                 input_id={"Login__FormPassw"} 
                 input_name={"Пароль"} 
                 input_type={"password"} 
-                input_value={values.password || ''} 
+                input_value={values.password || localStorage.getItem(`--loginPassword`) || ''} 
                 onChange={handleChange} 
                 input_auto_complite={"current-password"}
                 input_name_eng={"password"}

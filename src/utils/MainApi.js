@@ -7,6 +7,7 @@ class Api {
   async _requestResult(res) {
     const result = await res.json();
     return res.ok ? result : Promise.reject(result.message);
+    
   }
 
   async createUser(name, email, password) {

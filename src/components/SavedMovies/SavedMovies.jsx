@@ -17,14 +17,24 @@ const SavedMovies = ({ loggedIn, onDeleteClick, savedMoviesList }) => {
   const [filteredMovies, setFilteredMovies] = useState(showedMovies);
 
   const handleSearchSubmit = (inputValue) => {
+    localStorage.setItem(`${currentUser.email} - shortMovieSearch`, inputValue);
+
     console.log(savedMoviesList);
     const moviesList = filterMovies(savedMoviesList, inputValue, isShort);
     if (moviesList.length === 0) {
       setNotFoundMovies(true);
     } else {
       setNotFoundMovies(false);
-      setFilteredMovies(moviesList);
-      setShowedMovies(moviesList);
+      if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === "true") {
+        setFilteredMovies(filterShortMovies(moviesList));
+        setShowedMovies(filteredMovies);
+        console.log(showedMovies);
+      }
+      else {
+        setFilteredMovies(moviesList);
+        setShowedMovies(filteredMovies);
+        console.log(showedMovies);
+      }
     }
   }
 
@@ -64,6 +74,16 @@ const SavedMovies = ({ loggedIn, onDeleteClick, savedMoviesList }) => {
       ? setNotFoundMovies(false)
       : setNotFoundMovies(true);
   }, [savedMoviesList]);
+
+  useEffect(() => {
+    if (isShort) {
+      setShowedMovies(filterShortMovies(filteredMovies));
+    }
+    else {
+      setShowedMovies(filteredMovies);
+    }
+    // eslint-disable-next-line
+  }, [isShort])
 
   return (
     <Layout loggedIn={loggedIn}>
