@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import InputBlock from '../Blocks/InputBlock/InputBlock'
 import Logo from '../../images/logo.svg'
@@ -6,7 +6,7 @@ import useFormWithValidation from '../../hooks/useFormValidation'
 
 function Login({handleLogin, error}) {
 
-  const { values, handleChange, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
 
   
 
@@ -17,9 +17,9 @@ function Login({handleLogin, error}) {
     handleLogin(values);
   }
 
-  // useEffect(() => {
-  //   saveForm();
-  // }, [saveForm]);
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <main className='Login' id='Login'>
