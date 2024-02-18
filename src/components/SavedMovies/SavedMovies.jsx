@@ -1,112 +1,110 @@
-import React, { useContext, useEffect, useState } from "react";
-import Layout from "../Layout/Layout";
-import SearchForm from "../Blocks/SearchForm/SearchForm";
-import MoviesCardList from "../Blocks/MoviesCardList/MoviesCardList";
-import {
-  filterMovies,
-  filterShortMovies,
-} from "../../utils/utils.js";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useState, useCallback, useEffect } from "react";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+import { handleMovieFiltering, handleMovieSearch } from "../../utils/utils";
 
-const SavedMovies = ({ loggedIn, onDeleteClick, savedMoviesList }) => {
-  const currentUser = useContext(CurrentUserContext);
+function SavedMovies({ savedCards, onCardDelete }) {
+  const [cardsForRender, setCardsForRender] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [isFilterOn, setFilter] = useState(false);
+  const [isCardsNotFound, setCardsNotFound] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const [isShort, setIsShort] = useState(false);
-  const [NotFoundMovies, setNotFoundMovies] = useState(false);
-  const [showedMovies, setShowedMovies] = useState(savedMoviesList);
-  const [filteredMovies, setFilteredMovies] = useState(showedMovies);
-
-  const handleSearchSubmit = (inputValue) => {
-    localStorage.setItem(`${currentUser.email} - shortMovieSearch`, inputValue);
-
-    console.log(savedMoviesList);
-    const moviesList = filterMovies(savedMoviesList, inputValue, isShort);
-    if (moviesList.length === 0) {
-      setNotFoundMovies(true);
-    } else {
-      setNotFoundMovies(false);
-      if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === "true") {
-        setFilteredMovies(filterShortMovies(moviesList));
-        setShowedMovies(filteredMovies);
-        console.log(showedMovies);
+  const handleOnSearchSubmit = useCallback(
+    (searchQuery) => {
+      setCardsNotFound(false);
+      setIsSearching(true);
+      if (savedCards.length) {
+        const found = handleMovieSearch(savedCards, searchQuery, true);
+        setFilteredCards(found);
+        if (!found.length) {
+          setCardsNotFound(true);
+          setIsSearching(false);
+          setCardsForRender(found);
+        } else {
+          const filtered = handleMovieFiltering(found, isFilterOn, true);
+          setIsSearching(false);
+          setCardsForRender(filtered);
+          if (!filtered.length) {
+            setIsSearching(false);
+            setCardsNotFound(true);
+          }
+        }
+      } else {
+        setIsSearching(false);
+        setCardsNotFound(true);
       }
-      else {
-        setFilteredMovies(moviesList);
-        setShowedMovies(filteredMovies);
-        console.log(showedMovies);
-      }
-    }
-  }
+    },
+    [savedCards, isFilterOn]
+  );
 
-  const handleShortFilms = () => {
-    if (!isShort) {
-      setIsShort(true);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true);
-      setShowedMovies(filterShortMovies(filteredMovies));
-      filterShortMovies(filteredMovies).length === 0
-        ? setNotFoundMovies(true)
-        : setNotFoundMovies(false);
-    } else {
-      setIsShort(false);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false);
-      filteredMovies.length === 0
-        ? setNotFoundMovies(true)
-        : setNotFoundMovies(false);
-      setShowedMovies(filteredMovies);
-    }
-  }
+  const handleOnFilterClick = useCallback(
+    (isChecked) => {
+      setFilter(isChecked);
+      setCardsNotFound(false);
+      const filtered = handleMovieFiltering(filteredCards, isChecked, true);
+      setCardsForRender(filtered);
+      if (!filtered.length) {
+        setCardsNotFound(true);
+      }
+    },
+    [filteredCards]
+  );
 
   useEffect(() => {
+    setCardsNotFound(false);
     if (
-      localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === "true"
+      localStorage.getItem("savedMoviesSearchQuery") &&
+      localStorage.getItem("isSavedMoviesFilterOn")
     ) {
-      setIsShort(true);
-      setShowedMovies(filterShortMovies(savedMoviesList));
+      const filter = JSON.parse(localStorage.getItem("isSavedMoviesFilterOn"));
+      setFilter(filter);
+      const searchQuery = localStorage.getItem("savedMoviesSearchQuery");
+      const found = handleMovieSearch(savedCards, searchQuery, true);
+      setFilteredCards(found);
+      if (!found.length) {
+        setCardsNotFound(true);
+        setCardsForRender(found);
+      } else {
+        const filtered = handleMovieFiltering(found, filter, true);
+        setCardsForRender(filtered);
+        if (!filtered.length) {
+          setCardsNotFound(true);
+        }
+      }
+    } else if (
+      !localStorage.getItem("savedMoviesSearchQuery") &&
+      localStorage.getItem("isSavedMoviesFilterOn")
+    ) {
+      setFilteredCards(savedCards);
+      const filter = JSON.parse(localStorage.getItem("isSavedMoviesFilterOn"));
+      setFilter(filter);
+      const filtered = handleMovieFiltering(savedCards, filter, true);
+      setCardsForRender(filtered);
+      if (!filtered.length) {
+        setCardsNotFound(true);
+      }
     } else {
-      setIsShort(false);
-      setShowedMovies(savedMoviesList);
+      setCardsForRender(savedCards);
+      setFilteredCards(savedCards);
     }
-  }, [savedMoviesList, currentUser]);
-
-  useEffect(() => {
-    setFilteredMovies(savedMoviesList);
-    savedMoviesList.length !== 0
-      ? setNotFoundMovies(false)
-      : setNotFoundMovies(true);
-  }, [savedMoviesList]);
-
-  useEffect(() => {
-    if (isShort) {
-      setShowedMovies(filterShortMovies(filteredMovies));
-    }
-    else {
-      setShowedMovies(filteredMovies);
-    }
-    // eslint-disable-next-line
-  }, [isShort])
+  }, [savedCards]);
 
   return (
-    <Layout loggedIn={loggedIn}>
-      <section className="SavedMovies" id="SavedMovies">
-        <SearchForm
-          isShort={isShort}
-          handleSearchSubmit={handleSearchSubmit}
-          handleShortFilms={handleShortFilms}
-        ></SearchForm>
-        {!NotFoundMovies ? (
-          <MoviesCardList
-            moviesList={showedMovies}
-            savedMoviesList={savedMoviesList}
-            onDeleteClick={onDeleteClick}
-          />
-        ) : (
-          <div className="container SavedMovies__NotFound">
-            <p>Нет сохраненных фильмов</p>
-          </div>
-          
-        )}
-      </section>
-    </Layout>
+    <main className="saved-movies">
+      <SearchForm
+        onSearch={handleOnSearchSubmit}
+        onFilterChange={handleOnFilterClick}
+        isFilterOn={isFilterOn}
+        isSearching={isSearching}
+      />
+      <MoviesCardList
+        cards={cardsForRender}
+        savedCards={savedCards}
+        isCardsNotFound={isCardsNotFound}
+        onCardDelete={onCardDelete}
+      />
+    </main>
   );
 }
 

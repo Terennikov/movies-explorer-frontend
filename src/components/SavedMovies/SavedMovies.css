@@ -1,7 +1,4 @@
-.SavedMovies {
-    width: 100%;
-}
-.SavedMovies__NotFound {
-    display: flex;
-    justify-content: center;
+.saved-movies {
+  max-width: 100%;
+  flex: 1;
 }

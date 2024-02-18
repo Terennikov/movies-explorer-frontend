@@ -1,28 +1,15 @@
-const BASE_URL = 'https://api-terennikov.nomoredomainsmonster.ru';
-const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-const SHORTMOVIES_DURATION = 40;
-const DEVICE_PARAMS = {
-  desktop: {
-    width: 1280,
-    cards: {
-      total: 12,
-      more: 4,
-    },
-  },
-  tablet: {
-    width: 768,
-    cards: {
-      total: 8,
-      more: 2,
-    },
-  },
-  mobile: {
-    width: 320,
-    cards: {
-      total: 5,
-      more: 2,
-    },
-  },
-};
+export const ESC_KEY = "Escape";
 
-export { BASE_URL, MOVIES_URL, SHORTMOVIES_DURATION, DEVICE_PARAMS };
+export const BASE_URL = 'https://api-terennikov.nomoredomainsmonster.ru';
+export const MOVIES_URL = 'https://api.nomoreparties.co';
+
+export const USER_NAME_REG_EXP = "^[A-Za-zА-Яа-яЁё\\-\\s]+$";
+
+export const SHORT_MOVIE = 40;
+
+export const ERROR_MESSAGE = 'Какая-то ошибка('
+export const OK_MESSAGE = 'Готово'
+export const SUCCES_UPDATE_MESSAGE = 'Профиль обновлён'
+export const REQ_ERROR_MESSAGE = `Во время запроса произошла ошибка. Возможно, 
+проблема с соединением или сервер недоступен. Подождите 
+немного и попробуйте ещё раз`

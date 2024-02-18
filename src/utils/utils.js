@@ -1,61 +1,76 @@
-import { SHORTMOVIES_DURATION } from "./constants.js";
-function transformMovies(movies) {
-  movies.forEach((movie) => {
-    if (!movie.image) {
-      movie.image =
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1940&q=80";
-      movie.thumbnail =
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1940&q=80";
-    } else {
-      movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`;
-      movie.image = `https://api.nomoreparties.co${movie.image.url}`;
-    }
-    if (!movie.country) {
-      movie.country = "Russia";
-    }
-    if (!movie.nameEN) {
-      movie.nameEN = movie.nameRU;
-    }
+import { SHORT_MOVIE } from "./constants";
+
+export async function makeRequest(url, endpoint, method, credentials, body) {
+  const headers = {
+     "Content-Type": "application/json"
+ };
+  const config = { method, headers };
+  if (credentials) {
+    config.credentials = "include";
+  }
+  if (body !== undefined) {
+    config.body = JSON.stringify(body);
+  }
+  return await fetch(`${url}${endpoint}`, config).then((res) => {
+    const result = res.json();
+    return res.ok
+      ? result
+      : result.then((err) => Promise.reject(`${err.message}`));
   });
-  return movies;
 }
 
-function filterShortMovies(movies) {
-  return movies.filter((movie) => movie.duration < SHORTMOVIES_DURATION);
-}
-
-function filterMovies(movies, userQuery, shortMoviesCheckbox) {
-  const moviesByUserQuery = movies.filter((movie) => {
-    const movieRu = String(movie.nameRU).toLowerCase().trim();
-    const movieEn = String(movie.nameEN).toLowerCase().trim();
-    const userMovie = userQuery.toLowerCase().trim();
-    return (
-      movieRu.indexOf(userMovie) !== -1 || movieEn.indexOf(userMovie) !== -1
-    );
-  });
-
-  
-    return moviesByUserQuery;
-}
-function transformDuration(duration) {
-  const hours = Math.trunc(duration / 60);
+export function convertDuration(duration) {
   const minutes = duration % 60;
-  if (hours === 0) {
+  const hours = (duration - minutes) / 60;
+  if (hours < 1) {
     return `${minutes}м`;
   } else {
     return `${hours}ч ${minutes}м`;
   }
 }
-function getSavedMovieCard(arr, movie) {
-  return arr.find((item) => {
-    return item.movieId === (movie.id || movie.movieId);
+
+export function handleMovieFiltering(movies, isFilterOn, isSavedMovies) {
+  if (!isSavedMovies) {
+    localStorage.setItem("isMoviesFilterOn", isFilterOn);
+  } else {
+    localStorage.setItem("isSavedMoviesFilterOn", isFilterOn);
+  }
+  if (isFilterOn) {
+    const result = movies.filter((movie) => movie.duration <= SHORT_MOVIE);
+    return result;
+  } else {
+    return movies;
+  }
+}
+
+export function handleMovieSearch(movies, searchQuery, isSavedMovies) {
+  const normalizeSearchQuery = searchQuery.toLowerCase().trim();
+  const result = movies.filter((movie) => {
+    const normalizeNameRu = movie.nameRU.toLowerCase().trim();
+    const normalizeNameEn = movie.nameEN.toLowerCase().trim();
+    return (
+      normalizeNameRu.includes(normalizeSearchQuery) ||
+      normalizeNameEn.includes(normalizeSearchQuery)
+    );
+  });
+  if (!isSavedMovies) {
+    localStorage.setItem("foundMovies", JSON.stringify(result));
+    localStorage.setItem("moviesSearchQuery", normalizeSearchQuery);
+  } else {
+    localStorage.setItem("savedMoviesSearchQuery", normalizeSearchQuery);
+  }
+  return result;
+}
+
+export function handleSavedStatus(savedCards, movieCard) {
+  return savedCards.find((card) => {
+    return card.movieId === (movieCard.id || movieCard.movieId);
   });
 }
 
-export {
-  transformMovies,
-  filterMovies,
-  filterShortMovies,
-  transformDuration,
-  getSavedMovieCard,
-};
+export function handleScrollEffect(targetRef) {
+  targetRef.current.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}

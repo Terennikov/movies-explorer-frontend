@@ -1,74 +1,77 @@
-import React, {useEffect} from 'react'
-import { NavLink } from 'react-router-dom'
-import InputBlock from '../Blocks/InputBlock/InputBlock'
-import Logo from '../../images/logo.svg'
-import useFormWithValidation from '../../hooks/useFormValidation'
+import { Navigate } from "react-router-dom";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import AuthScreen from "../AuthScreen/AuthScreen";
 
-function Login({handleLogin, error}) {
+function Login({ onLogin, onLoading, loggedIn }) {
+  const { values, errors, isFormValid, onChange } = useFormWithValidation();
 
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
-
-  
-
-  const handleSubmit = (e) => {
-    localStorage.setItem(`--loginEmail`, values.email);
-    localStorage.setItem(`--loginPassword`, values.password);
+  function handleSubmit(e) {
     e.preventDefault();
-    handleLogin(values);
+    onLogin(values);
   }
 
-  useEffect(() => {
-    resetForm();
-  }, [resetForm]);
-
-  return (
-    <main className='Login' id='Login'>
-      <section className="container Login__FullHeight">
-        <div className="Login__Wrap">
-          <div className="Login__RegistrationBlock">
-            <form className='Login_Form' id='Login_Form' noValidate>
-            <div className="Login__LogoBlock">
-                <NavLink to='/'><img src={Logo} className="Logo" alt="Логотип" /></NavLink>
-              </div>
-              <h1 className='Login__Title'>Рады видеть!</h1>
-              <InputBlock 
-                input_id={"Login__FormEmail"} 
-                input_name={"E-mail"} 
-                input_type={"email"} 
-                input_value={values.email || localStorage.getItem(`--loginEmail`) || ''} 
-                onChange={handleChange} 
-                input_auto_complite={"email"}
-                input_name_eng={"email"}
-                input_error={errors.email}
-                required
-              />
-              
-              <InputBlock
-                input_id={"Login__FormPassw"} 
-                input_name={"Пароль"} 
-                input_type={"password"} 
-                input_value={values.password || localStorage.getItem(`--loginPassword`) || ''} 
-                onChange={handleChange} 
-                input_auto_complite={"current-password"}
-                input_name_eng={"password"}
-                input_error={errors.password}
-                required
-              />
-              
-            </form>
-            <div className="Login__ButtonsBlock">
-              {error ? <span className='Login__Button_Top_Error'>{error}</span> : null}
-              <button disabled={!isValid} type="submit" className='Login__ButtonsBlockSignInButton' onClick={(e) => handleSubmit(e)}>Войти</button>
-              <div className='Login__BottomNavLinkBlock'>
-                <p className='Login__BottomNavLinkPrompt'>Ещё не зарегистрированы?</p>
-                <NavLink to='/signup' className='Login__BottomNavLink'>Регистрация</NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  return loggedIn ? (
+    <Navigate to="/" replace />
+  ) : (
+    <main className="login">
+      <AuthScreen
+        title="Рады видеть!"
+        name="login"
+        onSubmit={handleSubmit}
+        isFormValid={isFormValid}
+        buttonText={onLoading ? "Вход..." : "Войти"}
+      >
+        <label className="form__input-wrapper">
+          E-mail
+          <input
+            className={`form__input ${
+              errors.email ? "form__input_style_error" : ""
+            }`}
+            type="text"
+            name="email"
+            form="login"
+            required
+            id="email-input"
+            disabled={onLoading ? true : false}
+            onChange={onChange}
+            value={values.email || ""}
+          />
+          <span
+            className={`form__input-error ${
+              errors.email ? "form__input-error_active" : ""
+            }`}
+          >
+            {errors.email || ""}
+          </span>
+        </label>
+        <label className="form__input-wrapper">
+          Пароль
+          <input
+            className={`form__input ${
+              errors.password ? "form__input_style_error" : ""
+            }`}
+            type="password"
+            name="password"
+            form="login"
+            required
+            minLength="6"
+            maxLength="30"
+            disabled={onLoading ? true : false}
+            id="password-input"
+            onChange={onChange}
+            value={values.password || ""}
+          />
+          <span
+            className={`form__input-error ${
+              errors.password ? "form__input-error_active" : ""
+            }`}
+          >
+            {errors.password || ""}
+          </span>
+        </label>
+      </AuthScreen>
     </main>
-  )
+  );
 }
 
-export default Login
+export default Login;

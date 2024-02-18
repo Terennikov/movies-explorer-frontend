@@ -1,82 +1,104 @@
-import React, { useEffect } from 'react'
-import Logo from '../../images/logo.svg'
-import { NavLink } from 'react-router-dom'
-import InputBlock from '../Blocks/InputBlock/InputBlock'
-import useFormWithValidation from '../../hooks/useFormValidation';
+import { Navigate } from "react-router-dom";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
+import AuthScreen from "../AuthScreen/AuthScreen";
+import { USER_NAME_REG_EXP } from "../../utils/constants";
 
-function Register({error, handleRegister}) {
-
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
-
+function Registr({ onRegistr, onLoading, loggedIn }) {
+  const { values, errors, isFormValid, onChange } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(values);
+    onRegistr(values);
   }
 
-  useEffect(() => {
-    resetForm();
-  }, [resetForm]);
-
-  return (
-    <main className='Register' id='Register'>
-      <section className="container Register_FullHeight">
-        <div className="Register__Wrap">
-          <div className="Register__RegistrationBlock">
-            <form className='Register_Form' id='Register_Form'>
-              <div className="Register__LogoBlock">
-                <NavLink to='/'><img src={Logo} className="Logo" alt="Логотип" /></NavLink>
-              </div>
-              <h1 className='Register__Title'>Добро пожаловать!</h1>
-              <InputBlock
-                input_id={"Register__FormName"} 
-                input_name={"Имя"} 
-                input_type={"text"} 
-                input_value={values.name || ''}  
-                onChange={handleChange}  
-                input_auto_complite={"name"}
-                input_error={errors.name}
-                minLength="2"
-                maxLength="30"
-                pattern="^[A-Za-zА-Яа-яЁё \s]+$"
-                input_name_eng={"name"}
-                required
-              />
-              <InputBlock 
-                input_id={"Register__FormEmail"} 
-                input_name={"E-mail"} 
-                input_type={"email"} 
-                input_value={values.email || ''}  
-                onChange={handleChange} 
-                input_auto_complite={"email"}
-                input_error={errors.email}
-                input_name_eng={"email"}
-                required
-              />
-              <InputBlock
-                input_id={"Register__FormPassw"} 
-                input_name={"Пароль"} 
-                input_type={"password"} 
-                input_value={values.email || ''}  
-                onChange={handleChange} 
-                input_error={errors.password}
-                input_name_eng={"password"}
-                required
-              />
-            </form>
-            <div className="Register__ButtonsBlock">
-            {error ? <span className='Login__Button_Top_Error'>{error}</span> : null}
-              <button disabled={!isValid} type='submit' className='Register__ButtonsBlockSignUpButton' onClick={(e) => handleSubmit(e)}>Зарегистрироваться</button>
-              <div className='Register__BottomNavLinkBlock'>
-                <p className='Register__BottomNavLinkPrompt'>Уже зарегистрированы?</p>
-                <NavLink to='/signin' className='Register__BottomNavLink'>Войти</NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  return loggedIn ? (
+    <Navigate to="/" replace />
+  ) : (
+    <main className="registr">
+      <AuthScreen
+        title="Добро пожаловать!"
+        name="registr"
+        onSubmit={handleSubmit}
+        isFormValid={isFormValid}
+        buttonText={onLoading ? "Регистрация..." : "Зарегистрироваться"}
+      >
+        <label className="form__input-wrapper">
+          Имя
+          <input
+            className={`form__input ${
+              errors.name && "form__input_style_error"
+            }`}
+            type="text"
+            name="name"
+            form="registr"
+            required
+            minLength="2"
+            maxLength="30"
+            pattern={USER_NAME_REG_EXP}
+            disabled={onLoading ? true : false}
+            id="name-input"
+            onChange={onChange}
+            value={values.name || ""}
+          />
+          <span
+            className={`form__input-error ${
+              errors.name ? "form__input-error_active" : ""
+            }`}
+          >
+            {errors.name || ""}
+          </span>
+        </label>
+        <label className="form__input-wrapper">
+          E-mail
+          <input
+            className={`form__input ${
+              errors.email ? "form__input_style_error" : ""
+            }`}
+            type="text"
+            name="email"
+            form="registr"
+            required
+            disabled={onLoading ? true : false}
+            id="email-input"
+            onChange={onChange}
+            value={values.email || ""}
+          />
+          <span
+            className={`form__input-error ${
+              errors.email ? "form__input-error_active" : ""
+            }`}
+          >
+            {errors.email || ""}
+          </span>
+        </label>
+        <label className="form__input-wrapper">
+          Пароль
+          <input
+            className={`form__input ${
+              errors.password ? "form__input_style_error" : ""
+            }`}
+            type="password"
+            name="password"
+            form="registr"
+            required
+            minLength="6"
+            maxLength="30"
+            disabled={onLoading ? true : false}
+            id="password-input"
+            onChange={onChange}
+            value={values.password || ""}
+          />
+          <span
+            className={`form__input-error ${
+              errors.password ? "form__input-error_active" : ""
+            }`}
+          >
+            {errors.password || ""}
+          </span>
+        </label>
+      </AuthScreen>
     </main>
-  )
+  );
 }
 
-export default Register
+export default Registr;

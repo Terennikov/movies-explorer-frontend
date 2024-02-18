@@ -1,86 +1,61 @@
-import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
+import AccountLink from "../AccountLink/AccountLink";
 
-import Logo from "../../images/logo.svg";
-import People_Icon from "../../images/people_icon_white.svg";
-import People_Icon_Gray from "../../images/people_icon_gray.svg";
-import MenuIcon from "../../images/burger-btn-icon.svg";
-import MenuIconWhite from "../../images/burger-btn-icon-white.svg";
+function Header({ onHamburgerClick, loggedIn }) {
 
-function Header({ isSignIn, menuOpenHandler }) {
   const location = useLocation();
 
   return (
-    <header
-      className={`header ${
-        location.pathname === "/" ? "header_Green" : "header_White"
-      }`}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col-3">
-            <NavLink to="/">
-              <img className="Logo" src={Logo} alt="Логотип" />
-            </NavLink>
-          </div>
-          <div className="col-6 navBlock">
-            <div className="nav1280">
-              {!isSignIn ? null : (
-                <Navigation
-                  location={location.pathname}
-                  isMainRoute={location.pathname === "/" ? true : false}
-                ></Navigation>
-              )}
-            </div>
-          </div>
-          <div className="col-3 flexend alc">
-            {isSignIn ? (
-              <div className="rightNavBlock flexend">
-                <NavLink
-                  to="/profile"
-                  className={`header_toProfileBtn nav1280 ${
-                    location.pathname === "/"
-                      ? "header_toProfileBtnGreen"
-                      : "header_toProfileBtnWhite"
-                  }`}
-                >
-                  Аккаунт
-                  {location.pathname === "/" ? (
-                    <img src={People_Icon} alt="Человек" />
-                  ) : (
-                    <img src={People_Icon_Gray} alt="Серый человек" />
-                  )}
-                </NavLink>
-                <button
-                  type="button"
-                  className="Header__menuBurger "
-                  onClick={() => menuOpenHandler()}
-                >
-                  {location.pathname === "/" ? (
-                    <img src={MenuIconWhite} alt="Меню" />
-                  ) : (
-                    <img src={MenuIcon} alt="Меню" />
-                  )}
-                </button>
-              </div>
-            ) : (
-              <nav className="signInUpBtns">
-                <NavLink
-                  to="/signup"
-                  className={`signUp ${
-                    location.pathname !== "/" ? `signUpBlack` : ""
-                  } `}
-                >
-                  Регистрация
-                </NavLink>
-                <NavLink to="/signin" className={`signIn`}>
-                  Войти
-                </NavLink>
-              </nav>
-            )}
-          </div>
+    <header className={`${
+      location.pathname === "/"
+      ? 'header__big-cont'
+      : ''
+    }`}>
+      <div className="header">
+      {loggedIn ? (
+        <div
+          className={`header__wrapper ${
+            location.pathname === "/" ? "header__wrapper_bg-color_hero" : ""
+          }`}
+        >
+          <Logo />
+          <Navigation />
+          <AccountLink />
+          <button
+            className={
+              location.pathname === "/"
+              ? `header__btn-hamburger hover-button`
+              : `header__btn-hamburger-black hover-button`
+            }
+            type="button"
+            aria-label="Меню навигации"
+            onClick={onHamburgerClick}
+          ></button>
         </div>
+      ) : (
+        <div className="header__wrapper header__wrapper_bg-color_hero">
+          <Logo />
+          <nav className="header__menu">
+            <ul className="header__menu-wrapper">
+              <li className="header__menu-item">
+                <Link to="/signup" className="header__link-white hover-link">
+                  Регистрация
+                </Link>
+              </li>
+              <li className="header__menu-item">
+                <Link
+                  to="/signin"
+                  className="header__link header__link_type_login hover-button"
+                >
+                  Войти
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
       </div>
     </header>
   );

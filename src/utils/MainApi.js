@@ -1,17 +1,13 @@
-import { BASE_URL } from './constants.js';
+import { BASE_URL } from "./constants";
 
-class Api {
-  constructor({ baseUrl }) {
-    this._baseUrl = baseUrl;
-  }
-  async _requestResult(res) {
+export async function _requestResult(res) {
     const result = await res.json();
     return res.ok ? result : Promise.reject(result.message);
     
   }
 
-  async createUser(name, email, password) {
-    const res = await fetch(`${this._baseUrl}/signup`, {
+export async function createUser(name, email, password) {
+    const res = await fetch(`${BASE_URL}/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -20,29 +16,30 @@ class Api {
               password,
           }),
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
 
-  async login(email, password) {
-    const res = await fetch(`${this._baseUrl}/signin`, {
+export async function login(email, password) {
+    const res = await fetch(`${BASE_URL}/signin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),
-      });
-      return await this._requestResult(res);
+      })
+
+      return await _requestResult(res);
   }
 
-  async getUserInfo() {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+export async function getUserInfo() {
+    const res = await fetch(`${BASE_URL}/users/me`, {
           headers: {
               authorization: `Bearer ${localStorage.getItem('jwt')}`,
           },
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
 
-  async updateUser(name, email) {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+export async function updateUser(name, email) {
+    const res = await fetch(`${BASE_URL}/users/me`, {
           method: 'PATCH',
           headers: {
               authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -50,20 +47,20 @@ class Api {
           },
           body: JSON.stringify({ name, email }),
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
 
-  async getSavedMovies() {
-    const res = await fetch(`${this._baseUrl}/movies`, {
+export async function getSavedMovies() {
+    const res = await fetch(`${BASE_URL}/movies`, {
           headers: {
               authorization: `Bearer ${localStorage.getItem('jwt')}`,
           },
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
 
-  async addNewMovie(data) {
-    const res = await fetch(`${this._baseUrl}/movies`, {
+export async function addNewMovie(data) {
+    const res = await fetch(`${BASE_URL}/movies`, {
           method: 'POST',
           headers: {
               authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -78,27 +75,20 @@ class Api {
               image: data.image,
               trailer: data.trailerLink,
               thumbnail: data.thumbnail,
-              movieId: data.id,
+              movieId: data.movieId,
               nameRU: data.nameRU,
               nameEN: data.nameEN,
           }),
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
 
-  async deleteMovie(data) {
-    const res = await fetch(`${this._baseUrl}/movies/${data}`, {
+export async function deleteMovie(data) {
+    const res = await fetch(`${BASE_URL}/movies/${data}`, {
           method: 'DELETE',
           headers: {
               authorization: `Bearer ${localStorage.getItem('jwt')}`,
           },
       });
-      return await this._requestResult(res);
+      return await _requestResult(res);
   }
-}
-
-const mainApi = new Api({
-  baseUrl: BASE_URL,
-});
-
-export default mainApi;

@@ -1,39 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+// IMPORT STYLES
+import "./Footer.css";
 
+// FOOTER COMPONENT
 function Footer() {
   return (
-    <footer className='Footer' id='Footer'>
-        <div className="container">
-            <div className="Footer_Author">
-                <p className="Footer_Author_Text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
-            </div>
-            <div className="Footer_BottomContent">
-                <h4 className="Footer_BottomContentYear">© 2020</h4>
-                <ul className="Footer_BottomRightContent">
-                    <li>
-                    <Link
-                        className="Footer_BottomContentYandexPracticum"
-                        to="https://github.com/h1ze"
-                        target="_blank"
-                    >
-                        Яндекс.Практикум
-                    </Link>
-                    </li>
-                    <li>
-                    <Link
-                        className="Footer_BottomContentGitLink"
-                        to="https://github.com/Terennikov"
-                        target="_blank"
-                    >
-                        Github
-                    </Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <footer className="footer">
+      <div className="footer__wrapper">
+        <p className="footer__text">
+          Учебный проект Яндекс.Практикум х BeatFilm.
+        </p>
+        <p className="footer__copyright">
+          &copy; {new Date().getFullYear()}
+        </p>
+        <ul className="footer__list">
+          <li className="footer__list-item">
+            <a
+              className="footer__link hover-link"
+              href="https://practicum.yandex.ru/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Яндекс.Практикум
+            </a>
+          </li>
+          <li className="footer__list-item">
+            <a
+              className="footer__link hover-link"
+              href="https://github.com/Terennikov"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+            </a>
+          </li>
+        </ul>
+      </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
