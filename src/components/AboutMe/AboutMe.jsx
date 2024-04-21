@@ -1,47 +1,42 @@
-import React from 'react';
-import SectionHeading from '../SectionHeading/SectionHeading';
-import { Link } from 'react-router-dom';
-import student from '../../images/student.png';
-import Portfolio from '../Portfolio/Portfolio';
-import('./AboutMe.css');
+import student from "../../images/student.png";
+import SectionTitle from "../SectionTitle/SectionTitle";
+import Portfolio from "../Portfolio/Portfolio";
 
-const AboutMe = () => {
+function AboutMe() {
+
   return (
-    <section className="about-me" id="about-me">
-      <div className="about-me__wrapper">
-        <SectionHeading>Студент</SectionHeading>
-        <div className="about-me__columns">
-          <div className="about-me__text-column">
-            <h3 className="about-me__title">Виталий</h3>
-            <p className="about-me__subtitle">Фронтенд-разработчик, 30 лет</p>
-            <p className="about-me__info">
-              Я&nbsp;родился и&nbsp;живу в&nbsp;Саратове, закончил факультет
-              экономики СГУ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю
-              слушать музыку, а&nbsp;ещё увлекаюсь бегом. Недавно начал кодить.
-              С&nbsp;2015 года работал в&nbsp;компании &laquo;СКБ Контур&raquo;.
-              После того, как прошёл курс по&nbsp;веб-разработке, начал
-              заниматься фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
-            </p>
-            <Link
-              className="about-me__link"
-              to="https://github.com/Terennikov"
-              target="_blank"
-            >
-              Github
-            </Link>
-          </div>
-          <div className="about-me__photo-column">
-            <img
-              className="about-me__photo"
-              src={student}
-              alt="Фотография студента"
-            />
-          </div>
-        </div>
-        <Portfolio />
-      </div>
+    <section className="about-me">
+      <SectionTitle title="Студент" />
+      <article className="about-me__bio">
+        <h3 className="about-me__name">Даниил</h3>
+        <p className="about-me__profession">
+          Фронтенд-разработчик, 28 лет
+        </p>
+        <p className="about-me__text">
+              Я&nbsp;родился и&nbsp;живу в&nbsp;Пскове, закончил юридический 
+              факультет ПсковГУ. Я&nbsp;люблю слушать музыку, а&nbsp;ещё увлекаюсь 
+              футболом, умею играть на форепьяно. Недавно начал кодить. С&nbsp;2015
+              года работал в&nbsp;городской админситрации,а также имею статус ИП. 
+              После того, как прошёл курс по&nbsp;веб-разработке, начал заниматься 
+              фриланс-заказами и&nbsp;искать&nbsp;постоянную работу в it сфере.
+        </p>
+        <a
+          className="about-me__link hover-link"
+          href="https://github.com/Terennikov"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Github
+        </a>
+        <img
+          className="about-me__img"
+          src={student}
+          alt="Фотография разработчика"
+        />
+      </article>
+      <Portfolio />
     </section>
   );
-};
+}
 
 export default AboutMe;

@@ -1,23 +1,17 @@
-import React from 'react'
-import Promo from './Promo/Promo'
-import AboutProject from './AboutProject/AboutProject'
-import Techs from './Techs/Techs'
-import AboutMe from './AboutMe/AboutMe'
-import Portfolio from './Portfolio/Portfolio'
-import Layout from '../Layout/Layout'
+import Promo from "../Promo/Promo";
+import AboutProject from "../AboutProject/AboutProject";
+import Techs from "../Techs/Techs";
+import AboutMe from "../AboutMe/AboutMe";
 
-function Main() {
+function Main({ aboutRef }) {
   return (
-      <Layout>
-        <section className='Main' id='Main'>
-        <Promo></Promo>
-        <AboutProject></AboutProject>
-        <Techs></Techs>
-        <AboutMe></AboutMe>
-        <Portfolio></Portfolio>
-        </section>
-      </Layout>
-  )
+    <main className="main">
+      <Promo aboutRef={aboutRef} />
+      <AboutProject aboutRef={aboutRef} />
+      <Techs />
+      <AboutMe />
+    </main>
+  );
 }
 
-export default Main
+export default Main;

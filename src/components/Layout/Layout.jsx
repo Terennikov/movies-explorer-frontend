@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import Menu from '../Blocks/Menu/Menu'
+import { Outlet, useLocation } from "react-router-dom";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-function Layout({ children, isDisableFooter }) {
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  useEffect(() => {
-    console.log(isMenuOpen);
-  }, [isMenuOpen]);
-
-  const menuOpenHandler = () => {
-      setIsMenuOpen(true);
-  };
-
-  const menuCloseHandler = () => {
-    setIsMenuOpen(false);
-  };
+function Layout({ onHamburgerClick, loggedIn }) {
+  const location = useLocation();
 
   return (
-    <div className='Layout' id='Layout'>
-      <Header isSignIn={true} menuOpenHandler={menuOpenHandler}></Header>
-      <main className='Layout__PageContent'>{children}
-      </main>
-      {isDisableFooter ? null : (<Footer></Footer>)}
-      <Menu isMenuOpen={isMenuOpen} closed={menuCloseHandler}/>
-    </div>
-  )
+    <>
+      <Header onHamburgerClick={onHamburgerClick} loggedIn={loggedIn} />
+      <Outlet />
+      {location.pathname !== "/profile" && <Footer />}
+    </>
+  );
 }
 
-export default Layout
+export default Layout;
